@@ -1,0 +1,319 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ARDS Schema Registry — schema.axiomordo.com</title>
+  <meta name="description" content="Browse ARDS canonical schemas, domain packs, and extension namespaces. All schemas are permanently archived and machine-resolvable.">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<nav class="nav">
+  <div class="nav__inner">
+    <a href="index.html" class="nav__logo">ARDS</a>
+    <div class="nav__links">
+      <a href="specification.html">Specification</a>
+      <a href="certification.html">Certification</a>
+      <a href="registry.html" class="active">Registry</a>
+      <a href="developer.html">Developers</a>
+      <a href="governance.html">Governance</a>
+    </div>
+    <a href="certification.html#apply" class="btn btn--sm">Get Certified</a>
+  </div>
+</nav>
+
+<div class="page-hero">
+  <div class="container">
+    <div class="badge badge--teal" style="margin-bottom:1rem;">schema.axiomordo.com</div>
+    <h1>ARDS Schema Registry</h1>
+    <p>The authoritative registry of all canonical ARDS schemas, domain packs, and registered extension namespaces. All URIs are permanently resolvable and versioned.</p>
+  </div>
+</div>
+
+<!-- REGISTRY OVERVIEW -->
+<section class="section">
+  <div class="container">
+    <div class="section-header">
+      <h2>Schema URI Pattern</h2>
+      <p>Every ARDS schema has a canonical, permanently resolvable URI. Resolving the URI returns the JSON Schema document.</p>
+    </div>
+    <pre><code>https://schema.axiomordo.com/ards/{ardsVersion}/{family}/{schema-name}.schema.json
+
+# Examples:
+https://schema.axiomordo.com/ards/1.0/meta/ards-meta.schema.json
+https://schema.axiomordo.com/ards/1.0/obligation-record/obligation-record.schema.json
+https://schema.axiomordo.com/ards/1.0/fueleu/obligation-record.schema.json
+https://schema.axiomordo.com/ards/1.0/cbam/embedded-carbon-declaration.schema.json</code></pre>
+  </div>
+</section>
+
+<!-- CORE SCHEMAS -->
+<section class="section section--alt">
+  <div class="container">
+    <div class="section-header">
+      <h2>Core Schema Set — ARDS v1.0</h2>
+      <p>Six artefact schemas plus the shared metadata envelope. Required for all ARDS implementations.</p>
+    </div>
+    <div class="schema-grid">
+      <div class="schema-card">
+        <div class="schema-card__name">ards-meta</div>
+        <div class="schema-card__family">meta</div>
+        <div class="schema-card__uri">schema.axiomordo.com/ards/1.0/meta/ards-meta.schema.json</div>
+        <div class="schema-card__desc">The shared <code>ards:meta</code> metadata envelope. Required in every ARDS artefact.</div>
+        <span class="badge badge--teal">GA</span>
+      </div>
+      <div class="schema-card">
+        <div class="schema-card__name">obligation-record</div>
+        <div class="schema-card__family">obligation-record</div>
+        <div class="schema-card__uri">schema.axiomordo.com/ards/1.0/obligation-record/obligation-record.schema.json</div>
+        <div class="schema-card__desc">Regulatory Obligation Record (ROR). Captures a single regulatory obligation for an entity and period.</div>
+        <span class="badge badge--teal">GA</span>
+      </div>
+      <div class="schema-card">
+        <div class="schema-card__name">evidence-artefact</div>
+        <div class="schema-card__family">evidence-artefact</div>
+        <div class="schema-card__uri">schema.axiomordo.com/ards/1.0/evidence-artefact/evidence-artefact.schema.json</div>
+        <div class="schema-card__desc">Evidence Artefact (EA). Structured evidence record with provenance, source type, and verification status.</div>
+        <span class="badge badge--teal">GA</span>
+      </div>
+      <div class="schema-card">
+        <div class="schema-card__name">compliance-verdict</div>
+        <div class="schema-card__family">compliance-verdict</div>
+        <div class="schema-card__uri">schema.axiomordo.com/ards/1.0/compliance-verdict/compliance-verdict.schema.json</div>
+        <div class="schema-card__desc">Compliance Verdict (CV). Records the formal compliance outcome referencing obligation and evidence.</div>
+        <span class="badge badge--teal">GA</span>
+      </div>
+      <div class="schema-card">
+        <div class="schema-card__name">trace-bundle</div>
+        <div class="schema-card__family">trace-bundle</div>
+        <div class="schema-card__uri">schema.axiomordo.com/ards/1.0/trace-bundle/trace-bundle.schema.json</div>
+        <div class="schema-card__desc">Trace Bundle (TB). Machine-readable provenance graph linking all artefacts in a compliance lifecycle.</div>
+        <span class="badge badge--teal">GA</span>
+      </div>
+      <div class="schema-card">
+        <div class="schema-card__name">unified-compliance-artefact</div>
+        <div class="schema-card__family">unified-compliance-artefact</div>
+        <div class="schema-card__uri">schema.axiomordo.com/ards/1.0/unified-compliance-artefact/uca.schema.json</div>
+        <div class="schema-card__desc">Unified Compliance Artefact (UCA). Portable composite embedding obligation, evidence, and verdict in one document.</div>
+        <span class="badge badge--teal">GA</span>
+      </div>
+      <div class="schema-card">
+        <div class="schema-card__name">audit-package</div>
+        <div class="schema-card__family">audit-package</div>
+        <div class="schema-card__uri">schema.axiomordo.com/ards/1.0/audit-package/audit-package.schema.json</div>
+        <div class="schema-card__desc">Audit Package (AP). Sealed, cryptographically signed archive of all artefacts for a given entity and period.</div>
+        <span class="badge badge--teal">GA</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FUELEU DOMAIN PACK -->
+<section class="section" id="fueleu">
+  <div class="container">
+    <div style="display:flex;align-items:center;gap:1rem;margin-bottom:1.5rem;">
+      <h2 style="margin:0;">FuelEU Maritime Domain Pack</h2>
+      <span class="badge badge--teal">v1.0 — GA</span>
+    </div>
+    <p style="color:var(--text-secondary);max-width:720px;margin-bottom:2rem;">Extends the ARDS core schemas for FuelEU Maritime Regulation (EU 2023/1805) compliance. Covers GHG intensity, biofuel blending, shore power, and fleet aggregation.</p>
+    <div class="schema-grid">
+      <div class="schema-card">
+        <div class="schema-card__name">fueleu/obligation-record</div>
+        <div class="schema-card__family">fueleu</div>
+        <div class="schema-card__uri">schema.axiomordo.com/ards/1.0/fueleu/obligation-record.schema.json</div>
+        <div class="schema-card__desc">FuelEU ROR extension. Adds vessel IMO number, voyage data, GHG intensity thresholds by article, and fleet pooling references.</div>
+        <span class="badge badge--teal">GA</span>
+      </div>
+      <div class="schema-card">
+        <div class="schema-card__name">fueleu/energy-report</div>
+        <div class="schema-card__family">fueleu</div>
+        <div class="schema-card__uri">schema.axiomordo.com/ards/1.0/fueleu/energy-report.schema.json</div>
+        <div class="schema-card__desc">Annual energy report per vessel. Fuel types, quantities, WTT and TTW factors, shore power usage, and biofuel blend fractions.</div>
+        <span class="badge badge--teal">GA</span>
+      </div>
+      <div class="schema-card">
+        <div class="schema-card__name">fueleu/ghg-intensity-record</div>
+        <div class="schema-card__family">fueleu</div>
+        <div class="schema-card__uri">schema.axiomordo.com/ards/1.0/fueleu/ghg-intensity-record.schema.json</div>
+        <div class="schema-card__desc">Computed GHG intensity (WtW, gCO2eq/MJ) per voyage or annual period. Includes calculation methodology and source data references.</div>
+        <span class="badge badge--teal">GA</span>
+      </div>
+      <div class="schema-card">
+        <div class="schema-card__name">fueleu/shore-power-declaration</div>
+        <div class="schema-card__family">fueleu</div>
+        <div class="schema-card__uri">schema.axiomordo.com/ards/1.0/fueleu/shore-power-declaration.schema.json</div>
+        <div class="schema-card__desc">Shore power connection record per port call. Power consumed, exemption status, and port authority reference.</div>
+        <span class="badge badge--teal">GA</span>
+      </div>
+      <div class="schema-card">
+        <div class="schema-card__name">fueleu/compliance-verdict</div>
+        <div class="schema-card__family">fueleu</div>
+        <div class="schema-card__uri">schema.axiomordo.com/ards/1.0/fueleu/compliance-verdict.schema.json</div>
+        <div class="schema-card__desc">FuelEU CV extension. Adds penalty calculation, surplus/deficit balance, pooling arrangement references, and EMSA submission metadata.</div>
+        <span class="badge badge--teal">GA</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CBAM DOMAIN PACK -->
+<section class="section section--alt" id="cbam">
+  <div class="container">
+    <div style="display:flex;align-items:center;gap:1rem;margin-bottom:1.5rem;">
+      <h2 style="margin:0;">CBAM Domain Pack</h2>
+      <span class="badge badge--teal">v1.0 — GA</span>
+    </div>
+    <p style="color:var(--text-secondary);max-width:720px;margin-bottom:2rem;">Extends ARDS for the EU Carbon Border Adjustment Mechanism (CBAM). Covers embedded carbon declarations, installation records, CBAM certificates, and authorised declarant profiles.</p>
+    <div class="schema-grid">
+      <div class="schema-card">
+        <div class="schema-card__name">cbam/obligation-record</div>
+        <div class="schema-card__family">cbam</div>
+        <div class="schema-card__uri">schema.axiomordo.com/ards/1.0/cbam/obligation-record.schema.json</div>
+        <div class="schema-card__desc">CBAM ROR. Adds CN code, installation country of origin, importation period, and declarant EORI number.</div>
+        <span class="badge badge--teal">GA</span>
+      </div>
+      <div class="schema-card">
+        <div class="schema-card__name">cbam/embedded-carbon-declaration</div>
+        <div class="schema-card__family">cbam</div>
+        <div class="schema-card__uri">schema.axiomordo.com/ards/1.0/cbam/embedded-carbon-declaration.schema.json</div>
+        <div class="schema-card__desc">Embedded carbon declaration per import consignment. Direct and indirect emissions, carbon price paid in country of origin.</div>
+        <span class="badge badge--teal">GA</span>
+      </div>
+      <div class="schema-card">
+        <div class="schema-card__name">cbam/installation-record</div>
+        <div class="schema-card__family">cbam</div>
+        <div class="schema-card__uri">schema.axiomordo.com/ards/1.0/cbam/installation-record.schema.json</div>
+        <div class="schema-card__desc">Third-country installation profile. Location, sector, production processes, and national authority reference.</div>
+        <span class="badge badge--teal">GA</span>
+      </div>
+      <div class="schema-card">
+        <div class="schema-card__name">cbam/certificate-record</div>
+        <div class="schema-card__family">cbam</div>
+        <div class="schema-card__uri">schema.axiomordo.com/ards/1.0/cbam/certificate-record.schema.json</div>
+        <div class="schema-card__desc">CBAM certificate issuance, surrender, and cancellation record. Links to EU Registry transaction IDs.</div>
+        <span class="badge badge--teal">GA</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PREVIEW PACKS -->
+<section class="section" id="pfas">
+  <div class="container">
+    <div class="section-header">
+      <h2>Preview Domain Packs — ARDS v1.1</h2>
+      <p>These packs are in active development by AxiomOrdo domain working groups. Preview access is available to design partners.</p>
+    </div>
+    <div class="grid grid--2">
+      <div class="card" id="pfas-detail">
+        <div style="display:flex;align-items:center;gap:1rem;margin-bottom:1rem;">
+          <h3 style="margin:0;">PFAS Domain Pack</h3>
+          <span class="badge badge--blue">v1.1 — Preview</span>
+        </div>
+        <p>Substance restriction compliance under REACH PFAS restriction proposals. Covers substance identification (CAS/EC numbers), use-case exemptions, supply chain declarations, and phase-out schedules.</p>
+        <p style="font-size:0.85rem;color:var(--text-secondary);margin-top:1rem;">Expected schemas: substance-restriction-record, use-exemption-declaration, supply-chain-declaration, phase-out-schedule</p>
+        <a href="mailto:standards@axiomordo.com?subject=PFAS Domain Pack Preview Access" class="btn btn--outline btn--sm" style="margin-top:1rem;">Request Preview Access →</a>
+      </div>
+      <div class="card" id="ets">
+        <div style="display:flex;align-items:center;gap:1rem;margin-bottom:1rem;">
+          <h3 style="margin:0;">ETS Domain Pack</h3>
+          <span class="badge badge--blue">v1.1 — Preview</span>
+        </div>
+        <p>EU Emissions Trading System compliance. Covers allocation records, verified emissions reports, surrender obligations, and registry transaction references. Aligned with MRV Regulation requirements.</p>
+        <p style="font-size:0.85rem;color:var(--text-secondary);margin-top:1rem;">Expected schemas: allocation-record, verified-emissions-report, surrender-obligation, registry-transaction</p>
+        <a href="mailto:standards@axiomordo.com?subject=ETS Domain Pack Preview Access" class="btn btn--outline btn--sm" style="margin-top:1rem;">Request Preview Access →</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- EXTENSION NAMESPACES -->
+<section class="section section--alt">
+  <div class="container">
+    <div class="section-header">
+      <h2>Registered Extension Namespaces</h2>
+      <p>Third-party extensions must register their namespace prefix in the ARDS Extension Registry. Registered namespaces are reserved globally.</p>
+    </div>
+    <table>
+      <thead>
+        <tr><th>Prefix</th><th>Organisation</th><th>Domain</th><th>Status</th><th>Contact</th></tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><code>fueleu:</code></td>
+          <td>AxiomOrdo Group</td>
+          <td>FuelEU Maritime</td>
+          <td><span class="badge badge--teal">Reserved</span></td>
+          <td>standards@axiomordo.com</td>
+        </tr>
+        <tr>
+          <td><code>cbam:</code></td>
+          <td>AxiomOrdo Group</td>
+          <td>EU CBAM</td>
+          <td><span class="badge badge--teal">Reserved</span></td>
+          <td>standards@axiomordo.com</td>
+        </tr>
+        <tr>
+          <td><code>pfas:</code></td>
+          <td>AxiomOrdo Group</td>
+          <td>PFAS Restriction</td>
+          <td><span class="badge badge--blue">Preview</span></td>
+          <td>standards@axiomordo.com</td>
+        </tr>
+        <tr>
+          <td><code>ets:</code></td>
+          <td>AxiomOrdo Group</td>
+          <td>EU ETS</td>
+          <td><span class="badge badge--blue">Preview</span></td>
+          <td>standards@axiomordo.com</td>
+        </tr>
+        <tr>
+          <td><code>x-*</code></td>
+          <td>Any implementor</td>
+          <td>Vendor-specific</td>
+          <td><span class="badge">Open</span></td>
+          <td>No registration required</td>
+        </tr>
+      </tbody>
+    </table>
+    <div class="note" style="margin-top:1.5rem;">To register a new namespace prefix, submit an RFC via the <a href="governance.html#rfc">RFC process</a>. Registrations are first-come, first-reserved.</div>
+  </div>
+</section>
+
+<footer class="footer">
+  <div class="footer__inner">
+    <div class="footer__col">
+      <div class="footer__logo">ARDS</div>
+      <p class="footer__tagline">The open standard for regulatory compliance artefacts.</p>
+      <p style="font-size:0.8rem;color:rgba(255,255,255,0.4);margin-top:1rem;">© 2026 AxiomOrdo Group. Licensed under AOSL-1.0.</p>
+    </div>
+    <div class="footer__col">
+      <div class="footer__heading">Standard</div>
+      <a href="specification.html" class="footer__link">Specification v1.0</a>
+      <a href="governance.html#rfc" class="footer__link">RFC Process</a>
+      <a href="governance.html" class="footer__link">Governance</a>
+    </div>
+    <div class="footer__col">
+      <div class="footer__heading">Registry</div>
+      <a href="registry.html" class="footer__link">Core Schemas</a>
+      <a href="registry.html#fueleu" class="footer__link">FuelEU Pack</a>
+      <a href="registry.html#cbam" class="footer__link">CBAM Pack</a>
+      <a href="registry.html#pfas" class="footer__link">PFAS Pack (Preview)</a>
+    </div>
+    <div class="footer__col">
+      <div class="footer__heading">Certification</div>
+      <a href="certification.html" class="footer__link">Overview</a>
+      <a href="certification.html#apply" class="footer__link">Apply</a>
+      <a href="certification.html#directory" class="footer__link">Certified Directory</a>
+    </div>
+  </div>
+  <div class="footer__bottom">
+    <span>standards@axiomordo.com</span>
+    <span>registry.axiomordo.com</span>
+    <span>schema.axiomordo.com</span>
+  </div>
+</footer>
+
+</body>
+</html>

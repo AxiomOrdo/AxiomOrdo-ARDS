@@ -1,0 +1,311 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ARDS Governance — Standards Board, Working Groups &amp; RFC Process</title>
+  <meta name="description" content="How ARDS is governed. AxiomOrdo Standards Board, domain working groups, the RFC process, and how to get involved.">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<nav class="nav">
+  <div class="nav__inner">
+    <a href="index.html" class="nav__logo">ARDS</a>
+    <div class="nav__links">
+      <a href="specification.html">Specification</a>
+      <a href="certification.html">Certification</a>
+      <a href="registry.html">Registry</a>
+      <a href="developer.html">Developers</a>
+      <a href="governance.html" class="active">Governance</a>
+    </div>
+    <a href="certification.html#apply" class="btn btn--sm">Get Certified</a>
+  </div>
+</nav>
+
+<div class="page-hero">
+  <div class="container">
+    <div class="badge badge--teal" style="margin-bottom:1rem;">Open Governance</div>
+    <h1>ARDS Governance</h1>
+    <p>ARDS is governed openly. The AxiomOrdo Standards Board chairs the process. Working groups, the RFC mechanism, and a user council ensure the standard evolves with the industry it serves.</p>
+  </div>
+</div>
+
+<!-- GOVERNANCE STRUCTURE -->
+<section class="section">
+  <div class="container">
+    <div class="section-header">
+      <h2>Governance Structure</h2>
+      <p>Five bodies govern ARDS. All are accountable to the standard's stated goal: machine-readable interoperability for regulatory compliance.</p>
+    </div>
+    <div class="grid grid--2">
+      <div class="card card--accent" style="border-left:4px solid var(--navy);">
+        <h3>AxiomOrdo Standards Board</h3>
+        <p>The ultimate governing authority for ARDS. Chaired by AxiomOrdo. Responsible for ratifying new versions of the specification, approving domain packs, accepting or rejecting RFCs, and maintaining the integrity of the standard.</p>
+        <p style="font-size:0.85rem;color:var(--text-secondary);margin-top:0.75rem;">Meetings: Quarterly + extraordinary sessions as required. Minutes published publicly.</p>
+      </div>
+      <div class="card card--accent" style="border-left:4px solid var(--blue);">
+        <h3>Technical Advisory Group (TAG)</h3>
+        <p>Reviews RFC submissions for technical correctness, implementation feasibility, and schema design quality. Issues technical recommendations to the Standards Board. Membership is invitation-based; nominees must demonstrate ARDS implementation experience.</p>
+        <p style="font-size:0.85rem;color:var(--text-secondary);margin-top:0.75rem;">Meetings: Monthly. Operates on a 60-day RFC review cycle.</p>
+      </div>
+      <div class="card card--accent" style="border-left:4px solid var(--teal);">
+        <h3>Domain Working Groups</h3>
+        <p>One working group per published domain pack (FuelEU, CBAM, PFAS, ETS). Open membership — any organisation may join. Working groups propose schema changes, maintain domain-specific guidance, and respond to domain-specific issues.</p>
+        <p style="font-size:0.85rem;color:var(--text-secondary);margin-top:0.75rem;">Chaired by AxiomOrdo. Meetings: Bi-monthly per domain group.</p>
+      </div>
+      <div class="card card--accent" style="border-left:4px solid var(--teal);">
+        <h3>Certification Committee</h3>
+        <p>Oversees the ARDS Certification Programme. Reviews certification applications, manages the conformance test suite, issues Certification Tokens, and handles appeals and revocations.</p>
+        <p style="font-size:0.85rem;color:var(--text-secondary);margin-top:0.75rem;">Meetings: As required. Decisions published in the certification registry.</p>
+      </div>
+    </div>
+    <div class="card" style="margin-top:2rem;border-left:4px solid var(--blue);">
+      <h3>User Council</h3>
+      <p>Representatives from ARDS implementing organisations, regulators, and compliance professionals. Provides industry perspective, votes on strategic direction, and surfaces real-world implementation friction. Seats are held by elected representatives of the certified-product community and invited regulatory observers.</p>
+      <p style="font-size:0.85rem;color:var(--text-secondary);margin-top:0.75rem;">Meetings: Semi-annual. Annual open call for new council members.</p>
+    </div>
+  </div>
+</section>
+
+<!-- WORKING GROUPS -->
+<section class="section section--alt" id="working-group">
+  <div class="container">
+    <div class="section-header">
+      <h2>Domain Working Groups</h2>
+      <p>Join the working group for your regulatory domain. Working group membership is open and free. All you need to contribute is an ARDS implementation or a concrete use case.</p>
+    </div>
+    <table>
+      <thead>
+        <tr><th>Working Group</th><th>Domain Pack</th><th>Current Focus</th><th>Status</th><th>Join</th></tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><strong>FuelEU WG</strong></td>
+          <td>ARDS-FuelEU v1.0</td>
+          <td>Fleet pooling schema, biofuel certification linkage, EMSA submission format</td>
+          <td><span class="badge badge--teal">Active</span></td>
+          <td><a href="mailto:standards@axiomordo.com?subject=FuelEU WG Membership">Join →</a></td>
+        </tr>
+        <tr>
+          <td><strong>CBAM WG</strong></td>
+          <td>ARDS-CBAM v1.0</td>
+          <td>Precursor goods schema, transitional period handling, EU Registry API alignment</td>
+          <td><span class="badge badge--teal">Active</span></td>
+          <td><a href="mailto:standards@axiomordo.com?subject=CBAM WG Membership">Join →</a></td>
+        </tr>
+        <tr>
+          <td><strong>PFAS WG</strong></td>
+          <td>ARDS-PFAS v1.1</td>
+          <td>Substance identification schema, CAS number registry integration, exemption workflow</td>
+          <td><span class="badge badge--blue">Forming</span></td>
+          <td><a href="mailto:standards@axiomordo.com?subject=PFAS WG Membership">Join →</a></td>
+        </tr>
+        <tr>
+          <td><strong>ETS WG</strong></td>
+          <td>ARDS-ETS v1.1</td>
+          <td>MRV alignment, registry transaction schema, surrender obligation tracking</td>
+          <td><span class="badge badge--blue">Forming</span></td>
+          <td><a href="mailto:standards@axiomordo.com?subject=ETS WG Membership">Join →</a></td>
+        </tr>
+      </tbody>
+    </table>
+    <div class="note" style="margin-top:1.5rem;">All working group meetings are recorded and minutes are published within 5 business days. To propose a new domain working group, submit an RFC-Domain proposal.</div>
+  </div>
+</section>
+
+<!-- RFC PROCESS -->
+<section class="section" id="rfc">
+  <div class="container">
+    <div class="section-header">
+      <h2>The RFC Process</h2>
+      <p>Changes to the ARDS specification, domain packs, or governance are proposed through a formal Request for Comment (RFC) process. Anyone can submit an RFC.</p>
+    </div>
+
+    <div class="grid grid--3" style="margin-bottom:3rem;">
+      <div class="card" style="text-align:center;">
+        <div style="font-size:2.5rem;margin-bottom:0.5rem;">📝</div>
+        <h3>RFC-Spec</h3>
+        <p>Changes to the normative ARDS specification (ARDS-SPEC-001). Schema additions, field changes, new conformance requirements.</p>
+      </div>
+      <div class="card" style="text-align:center;">
+        <div style="font-size:2.5rem;margin-bottom:0.5rem;">🗂️</div>
+        <h3>RFC-Domain</h3>
+        <p>New domain packs or changes to existing domain packs. Must include a draft schema set and a regulatory reference mapping.</p>
+      </div>
+      <div class="card" style="text-align:center;">
+        <div style="font-size:2.5rem;margin-bottom:0.5rem;">⚙️</div>
+        <h3>RFC-Process</h3>
+        <p>Changes to governance, certification, or tooling processes. Does not affect the normative specification.</p>
+      </div>
+    </div>
+
+    <h3>RFC Lifecycle</h3>
+    <table>
+      <thead>
+        <tr><th>Stage</th><th>Name</th><th>Duration</th><th>Description</th></tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><span class="badge">1</span></td>
+          <td>Draft</td>
+          <td>—</td>
+          <td>Author prepares RFC using the standard template and submits to <a href="mailto:standards@axiomordo.com">standards@axiomordo.com</a>. Assigned an RFC number.</td>
+        </tr>
+        <tr>
+          <td><span class="badge">2</span></td>
+          <td>Community Review</td>
+          <td>30 days</td>
+          <td>RFC is published publicly. Any party may submit written comments. Author responds to all substantive comments.</td>
+        </tr>
+        <tr>
+          <td><span class="badge">3</span></td>
+          <td>TAG Review</td>
+          <td>30 days</td>
+          <td>Technical Advisory Group reviews for correctness and feasibility. Issues a technical recommendation: Accept, Accept-with-changes, or Reject.</td>
+        </tr>
+        <tr>
+          <td><span class="badge">4</span></td>
+          <td>Standards Board Vote</td>
+          <td>15 days</td>
+          <td>Standards Board votes. Simple majority for minor changes; two-thirds supermajority for breaking changes.</td>
+        </tr>
+        <tr>
+          <td><span class="badge badge--teal">5</span></td>
+          <td>Accepted / Rejected</td>
+          <td>—</td>
+          <td>Accepted RFCs are assigned to a milestone release. Rejected RFCs are published with the rationale for rejection.</td>
+        </tr>
+        <tr>
+          <td><span class="badge badge--teal">6</span></td>
+          <td>Implemented</td>
+          <td>Per milestone</td>
+          <td>Accepted RFC is implemented in the specification and/or schemas at the assigned release milestone.</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <div style="text-align:center;margin-top:2rem;">
+      <a href="mailto:standards@axiomordo.com?subject=RFC Submission" class="btn btn--primary">Submit an RFC →</a>
+    </div>
+  </div>
+</section>
+
+<!-- RFC TEMPLATE -->
+<section class="section section--alt">
+  <div class="container">
+    <div class="section-header">
+      <h2>RFC Template</h2>
+      <p>Use this structure for all RFC submissions. Plain text or Markdown is preferred.</p>
+    </div>
+    <pre><code># RFC-[NUMBER]: [Title]
+
+**Type:** RFC-Spec | RFC-Domain | RFC-Process
+**Author(s):** Name, Organisation
+**Submitted:** YYYY-MM-DD
+**Status:** Draft
+
+## Abstract
+One paragraph summary of the proposed change.
+
+## Motivation
+Why is this change needed? What problem does it solve?
+Reference specific use cases, implementation friction, or regulatory requirements.
+
+## Specification
+Precise description of the proposed change.
+Include:
+- Exact field names, types, and cardinalities
+- Normative language (SHALL / SHOULD / MAY)
+- JSON Schema fragments for schema changes
+- Migration path for existing implementations (if breaking)
+
+## Domain Pack Impact (RFC-Domain only)
+- Regulatory reference mapping
+- Draft schema families (minimum: obligation-record)
+- Working group chair proposal
+
+## Alternatives Considered
+What alternatives were evaluated and why were they not chosen?
+
+## Backwards Compatibility
+Is this change backward-compatible?
+If not: describe the migration path and proposed deprecation timeline.
+
+## References
+Regulatory documents, prior RFCs, or external standards referenced.</code></pre>
+  </div>
+</section>
+
+<!-- DESIGN PARTNER -->
+<section class="section">
+  <div class="container" style="text-align:center;max-width:720px;">
+    <h2 style="margin-bottom:1rem;">Design Partner Programme</h2>
+    <p style="font-size:1.1rem;color:var(--text-secondary);margin-bottom:2rem;">AxiomOrdo is working with a founding cohort of compliance technology vendors to shape ARDS v1.1. Design partners receive early access to domain packs, discounted certification, and a named seat at the relevant working group.</p>
+    <div style="display:flex;gap:1rem;justify-content:center;flex-wrap:wrap;">
+      <a href="mailto:standards@axiomordo.com?subject=ARDS Design Partner Application" class="btn btn--primary btn--lg">Apply for Design Partner Status</a>
+    </div>
+    <div class="note" style="margin-top:2rem;text-align:left;">Design partner status is available to organisations actively building or operating compliance software in one or more ARDS-supported regulatory domains. The programme accommodates up to 12 founding design partners. Current cohort status: <strong>OPEN</strong>.</div>
+  </div>
+</section>
+
+<!-- LICENCE -->
+<section class="section section--alt">
+  <div class="container">
+    <div class="section-header">
+      <h2>Licence — AOSL-1.0</h2>
+    </div>
+    <div class="card" style="max-width:800px;margin:0 auto;">
+      <p>The AxiomOrdo Regulatory Data Standard and all associated schemas, documentation, and tooling are published under the <strong>AxiomOrdo Open Standard Licence 1.0 (AOSL-1.0)</strong>.</p>
+      <p style="margin-top:1rem;">AOSL-1.0 grants a free, perpetual, irrevocable, worldwide licence to any party to:</p>
+      <ul style="line-height:2;padding-left:1.5rem;margin-top:0.5rem;">
+        <li>Implement ARDS in any software product or service</li>
+        <li>Reproduce and distribute ARDS schemas and documentation</li>
+        <li>Create derivative works for purposes of implementation and testing</li>
+      </ul>
+      <p style="margin-top:1rem;">The licence does <strong>not</strong> grant rights to:</p>
+      <ul style="line-height:2;padding-left:1.5rem;margin-top:0.5rem;">
+        <li>Use the ARDS name or AxiomOrdo marks without permission</li>
+        <li>Claim AxiomOrdo certification without a valid Certification Token</li>
+        <li>Publish modified versions of the specification as the ARDS standard</li>
+      </ul>
+      <p style="margin-top:1.5rem;font-size:0.9rem;color:var(--text-secondary);">Full licence text available at <a href="mailto:standards@axiomordo.com">standards@axiomordo.com</a> and in Annex D of the ARDS v1.0 Specification.</p>
+    </div>
+  </div>
+</section>
+
+<footer class="footer">
+  <div class="footer__inner">
+    <div class="footer__col">
+      <div class="footer__logo">ARDS</div>
+      <p class="footer__tagline">The open standard for regulatory compliance artefacts.</p>
+      <p style="font-size:0.8rem;color:rgba(255,255,255,0.4);margin-top:1rem;">© 2026 AxiomOrdo Group. Licensed under AOSL-1.0.</p>
+    </div>
+    <div class="footer__col">
+      <div class="footer__heading">Standard</div>
+      <a href="specification.html" class="footer__link">Specification v1.0</a>
+      <a href="#rfc" class="footer__link">RFC Process</a>
+      <a href="#working-group" class="footer__link">Working Groups</a>
+    </div>
+    <div class="footer__col">
+      <div class="footer__heading">Tools</div>
+      <a href="developer.html#validator" class="footer__link">ards-validate CLI</a>
+      <a href="registry.html" class="footer__link">Schema Registry</a>
+      <a href="developer.html" class="footer__link">Quickstart Guide</a>
+    </div>
+    <div class="footer__col">
+      <div class="footer__heading">Certification</div>
+      <a href="certification.html" class="footer__link">Overview</a>
+      <a href="certification.html#apply" class="footer__link">Apply</a>
+      <a href="certification.html#directory" class="footer__link">Certified Directory</a>
+    </div>
+  </div>
+  <div class="footer__bottom">
+    <span>standards@axiomordo.com</span>
+    <span>registry.axiomordo.com</span>
+    <span>schema.axiomordo.com</span>
+  </div>
+</footer>
+
+</body>
+</html>

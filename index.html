@@ -1,0 +1,387 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ARDS — AxiomOrdo Regulatory Data Standard</title>
+  <meta name="description" content="The open, machine-readable standard for regulatory compliance artefacts. ARDS defines the language that compliance tools speak.">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<nav class="nav">
+  <div class="nav__inner">
+    <a href="index.html" class="nav__logo">ARDS</a>
+    <div class="nav__links">
+      <a href="specification.html">Specification</a>
+      <a href="certification.html">Certification</a>
+      <a href="registry.html">Registry</a>
+      <a href="developer.html">Developers</a>
+      <a href="governance.html">Governance</a>
+    </div>
+    <a href="certification.html#apply" class="btn btn--sm">Get Certified</a>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero__inner">
+    <div class="badge badge--teal" style="margin-bottom:1.2rem;">ARDS v1.0 — Published May 2026</div>
+    <h1 class="hero__title">The Language Compliance Tools Speak</h1>
+    <p class="hero__sub">AxiomOrdo Regulatory Data Standard (ARDS) is the open, machine-readable interoperability framework for regulatory compliance artefacts. One schema. Any regulator. Any platform.</p>
+    <div class="hero__actions">
+      <a href="specification.html" class="btn btn--primary btn--lg">Read the Specification</a>
+      <a href="developer.html" class="btn btn--outline btn--lg">Quickstart Guide</a>
+    </div>
+    <p class="hero__tagline">Free to implement · Openly governed · AOSL-1.0 licensed</p>
+  </div>
+</section>
+
+<!-- TRUST BAR -->
+<div class="trust">
+  <div class="trust__inner">
+    <div class="trust__item">
+      <span class="trust__label">Standard Version</span>
+      <span class="trust__value">ARDS 1.0</span>
+    </div>
+    <div class="trust__item">
+      <span class="trust__label">Artefact Types</span>
+      <span class="trust__value">6 Normative</span>
+    </div>
+    <div class="trust__item">
+      <span class="trust__label">Domain Packs</span>
+      <span class="trust__value">FuelEU · CBAM · PFAS · ETS</span>
+    </div>
+    <div class="trust__item">
+      <span class="trust__label">Conformance Levels</span>
+      <span class="trust__value">6 Tiers</span>
+    </div>
+    <div class="trust__item">
+      <span class="trust__label">Validator</span>
+      <span class="trust__value">ards-validate CLI</span>
+    </div>
+    <div class="trust__item">
+      <span class="trust__label">Governance</span>
+      <span class="trust__value">AxiomOrdo Standards Board</span>
+    </div>
+  </div>
+</div>
+
+<!-- WHAT IS ARDS -->
+<section class="section">
+  <div class="container">
+    <div class="section-header">
+      <h2>What Is ARDS?</h2>
+      <p>Regulatory compliance generates mountains of data — emission measurements, obligation records, audit trails, verdicts. Today that data is locked in proprietary formats, siloed by vendor, and incomprehensible across borders. ARDS fixes that.</p>
+    </div>
+    <div class="grid grid--3">
+      <div class="card card--accent">
+        <h3>A Common Schema Language</h3>
+        <p>ARDS defines canonical JSON schemas for every artefact in the regulatory compliance lifecycle. If it has an ARDS schema, it can be read by any ARDS-conformant tool — today and in ten years.</p>
+      </div>
+      <div class="card card--accent">
+        <h3>A Conformance Framework</h3>
+        <p>Six progressive conformance levels let implementors signal exactly how ARDS-compatible their tools are — from basic schema validity all the way to full platform certification.</p>
+      </div>
+      <div class="card card--accent">
+        <h3>An Open Governance Model</h3>
+        <p>ARDS is governed by the AxiomOrdo Standards Board with open working groups, a published RFC process, and a user council. Anyone can propose. AxiomOrdo chairs.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- THE ARTEFACT MODEL -->
+<section class="section section--alt">
+  <div class="container">
+    <div class="section-header">
+      <h2>Six Normative Artefact Types</h2>
+      <p>ARDS defines the complete lifecycle of a compliance record, from raw obligation through to audited package.</p>
+    </div>
+    <div class="grid grid--2">
+      <div class="card">
+        <div style="display:flex;align-items:center;gap:0.75rem;margin-bottom:0.75rem;">
+          <span class="badge badge--navy">ROR</span>
+          <strong>Regulatory Obligation Record</strong>
+        </div>
+        <p>Captures a single regulatory obligation — the rule, the target entity, the applicable period, and the applicable domain pack. The anchor for everything that follows.</p>
+      </div>
+      <div class="card">
+        <div style="display:flex;align-items:center;gap:0.75rem;margin-bottom:0.75rem;">
+          <span class="badge badge--navy">EA</span>
+          <strong>Evidence Artefact</strong>
+        </div>
+        <p>A structured record of evidence supporting compliance — measurement data, certificates, declarations, lab reports. Carries provenance and verification status.</p>
+      </div>
+      <div class="card">
+        <div style="display:flex;align-items:center;gap:0.75rem;margin-bottom:0.75rem;">
+          <span class="badge badge--teal">CV</span>
+          <strong>Compliance Verdict</strong>
+        </div>
+        <p>The formal outcome: compliant, non-compliant, or under-review. Links directly to the obligation record and the evidence used to reach the verdict.</p>
+      </div>
+      <div class="card">
+        <div style="display:flex;align-items:center;gap:0.75rem;margin-bottom:0.75rem;">
+          <span class="badge badge--teal">TB</span>
+          <strong>Trace Bundle</strong>
+        </div>
+        <p>A machine-readable graph of provenance links connecting obligations, evidence, and verdicts. Enables automated audit trails and regulator-ready exports.</p>
+      </div>
+      <div class="card">
+        <div style="display:flex;align-items:center;gap:0.75rem;margin-bottom:0.75rem;">
+          <span class="badge badge--blue">UCA</span>
+          <strong>Unified Compliance Artefact</strong>
+        </div>
+        <p>A composite envelope containing obligation, evidence, and verdict in a single portable document. The standard submission format for cross-border regulatory filings.</p>
+      </div>
+      <div class="card">
+        <div style="display:flex;align-items:center;gap:0.75rem;margin-bottom:0.75rem;">
+          <span class="badge badge--blue">AP</span>
+          <strong>Audit Package</strong>
+        </div>
+        <p>A sealed, signed collection of all artefacts for a given entity and period. Designed for regulator submission and long-term archival with cryptographic integrity.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CONFORMANCE LEVELS -->
+<section class="section">
+  <div class="container">
+    <div class="section-header">
+      <h2>Conformance Levels</h2>
+      <p>Six tiers, each building on the last. Implementors self-declare or seek AxiomOrdo certification for levels 3–6.</p>
+    </div>
+    <table>
+      <thead>
+        <tr>
+          <th>Level</th>
+          <th>Name</th>
+          <th>Key Requirement</th>
+          <th>Certification</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><span class="badge badge--teal">L1</span></td>
+          <td>Schema-Valid</td>
+          <td>Passes JSON Schema validation against the declared ARDS schema</td>
+          <td>Self-declare</td>
+        </tr>
+        <tr>
+          <td><span class="badge badge--teal">L2</span></td>
+          <td>ARDS Core Conformant</td>
+          <td>Implements full <code>ards:meta</code> envelope with all required fields</td>
+          <td>Self-declare</td>
+        </tr>
+        <tr>
+          <td><span class="badge badge--blue">L3</span></td>
+          <td>ARDS Extended Conformant</td>
+          <td>Implements trace links, provenance chain, and domain-specific extensions</td>
+          <td>AxiomOrdo audited</td>
+        </tr>
+        <tr>
+          <td><span class="badge badge--blue">L4</span></td>
+          <td>ARDS Certified Generator</td>
+          <td>Tool produces ARDS artefacts at L3; passes full test suite</td>
+          <td>AxiomOrdo certified</td>
+        </tr>
+        <tr>
+          <td><span class="badge badge--navy">L5</span></td>
+          <td>ARDS Certified Consumer</td>
+          <td>Tool ingests and processes ARDS artefacts from any certified generator</td>
+          <td>AxiomOrdo certified</td>
+        </tr>
+        <tr>
+          <td><span class="badge badge--navy">L6</span></td>
+          <td>ARDS Certified Platform</td>
+          <td>End-to-end platform: generates, stores, traces, and exports ARDS artefacts</td>
+          <td>AxiomOrdo certified</td>
+        </tr>
+      </tbody>
+    </table>
+    <div style="text-align:center;margin-top:2rem;">
+      <a href="certification.html" class="btn btn--primary">View Certification Programme →</a>
+    </div>
+  </div>
+</section>
+
+<!-- DOMAIN PACKS -->
+<section class="section section--alt">
+  <div class="container">
+    <div class="section-header">
+      <h2>Domain Packs</h2>
+      <p>ARDS core schemas are extended by domain packs — regulation-specific schema families that add the fields, enumerations, and validation rules required by each regulatory regime.</p>
+    </div>
+    <div class="grid grid--4">
+      <div class="card" style="text-align:center;">
+        <div style="font-size:2rem;font-weight:800;color:var(--teal);margin-bottom:0.5rem;">FuelEU</div>
+        <div class="badge badge--teal" style="margin-bottom:1rem;">v1.0 — GA</div>
+        <p>FuelEU Maritime Regulation. GHG intensity, biofuel blending, shore power compliance. Covers vessels, voyages, and fleet aggregates.</p>
+        <a href="registry.html#fueleu" class="btn btn--outline btn--sm" style="margin-top:1rem;">View Schemas →</a>
+      </div>
+      <div class="card" style="text-align:center;">
+        <div style="font-size:2rem;font-weight:800;color:var(--teal);margin-bottom:0.5rem;">CBAM</div>
+        <div class="badge badge--teal" style="margin-bottom:1rem;">v1.0 — GA</div>
+        <p>EU Carbon Border Adjustment Mechanism. Embedded carbon declarations, installation records, CBAM certificates, and authorised declarant profiles.</p>
+        <a href="registry.html#cbam" class="btn btn--outline btn--sm" style="margin-top:1rem;">View Schemas →</a>
+      </div>
+      <div class="card" style="text-align:center;">
+        <div style="font-size:2rem;font-weight:800;color:var(--blue);margin-bottom:0.5rem;">PFAS</div>
+        <div class="badge badge--blue" style="margin-bottom:1rem;">v1.1 — Preview</div>
+        <p>PFAS substance restriction compliance. Substance identification, use-case exemptions, supply chain declarations, and phase-out schedules.</p>
+        <a href="registry.html#pfas" class="btn btn--outline btn--sm" style="margin-top:1rem;">View Schemas →</a>
+      </div>
+      <div class="card" style="text-align:center;">
+        <div style="font-size:2rem;font-weight:800;color:var(--blue);margin-bottom:0.5rem;">ETS</div>
+        <div class="badge badge--blue" style="margin-bottom:1rem;">v1.1 — Preview</div>
+        <p>EU Emissions Trading System. Allocation records, surrender obligations, verified emissions, and registry transaction references.</p>
+        <a href="registry.html#ets" class="btn btn--outline btn--sm" style="margin-top:1rem;">View Schemas →</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- WHY ARDS -->
+<section class="section">
+  <div class="container">
+    <div class="section-header">
+      <h2>Why ARDS Wins</h2>
+      <p>Regulators demand interoperability. Enterprises demand auditability. Vendors demand portability. ARDS is the only standard built for all three.</p>
+    </div>
+    <div class="grid grid--3">
+      <div class="card card--navy">
+        <h3 style="color:#fff;">Regulator-Ready</h3>
+        <p style="color:rgba(255,255,255,0.8);">ARDS Audit Packages carry cryptographic signatures, full provenance chains, and machine-readable metadata designed for automated regulatory ingestion.</p>
+      </div>
+      <div class="card card--navy">
+        <h3 style="color:#fff;">Vendor-Neutral</h3>
+        <p style="color:rgba(255,255,255,0.8);">AOSL-1.0 licence means any vendor can implement ARDS for free. The standard is openly governed. No lock-in. No licence fees. No permission required to build.</p>
+      </div>
+      <div class="card card--navy">
+        <h3 style="color:#fff;">Future-Proof</h3>
+        <p style="color:rgba(255,255,255,0.8);">Semantic versioning and a published RFC process ensure ARDS evolves without breaking existing implementations. Your data stays readable for as long as the regulation lasts.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- GET STARTED -->
+<section class="section section--alt">
+  <div class="container">
+    <div class="section-header">
+      <h2>Get Started in Three Steps</h2>
+    </div>
+    <div class="steps">
+      <div class="step">
+        <div class="step__number">1</div>
+        <h3>Read the Spec</h3>
+        <p>The ARDS v1.0 Specification (ARDS-SPEC-001) is the authoritative normative reference. It defines all artefact types, required fields, conformance requirements, and extension rules.</p>
+        <a href="specification.html" class="btn btn--outline btn--sm" style="margin-top:1rem;">ARDS-SPEC-001 →</a>
+      </div>
+      <div class="step">
+        <div class="step__number">2</div>
+        <h3>Validate Your Artefacts</h3>
+        <p>Install <code>ards-validate</code>, the official CLI validator. Point it at any JSON file and get an instant conformance report against any ARDS level.</p>
+        <a href="developer.html#validator" class="btn btn--outline btn--sm" style="margin-top:1rem;">Install Validator →</a>
+      </div>
+      <div class="step">
+        <div class="step__number">3</div>
+        <h3>Get Certified</h3>
+        <p>Certification from AxiomOrdo is the market signal that your tool meets the standard. Apply through the registry — founding-period pricing is available now.</p>
+        <a href="certification.html#apply" class="btn btn--outline btn--sm" style="margin-top:1rem;">Apply for Certification →</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- QUICK CODE EXAMPLE -->
+<section class="section">
+  <div class="container">
+    <div class="section-header">
+      <h2>A Conformant ARDS Artefact</h2>
+      <p>Every ARDS artefact carries the <code>ards:meta</code> envelope. This is what L2 Core Conformance looks like.</p>
+    </div>
+    <pre><code>{
+  "ards:meta": {
+    "ardsVersion": "1.0.0",
+    "schemaId": "https://schema.axiomordo.com/ards/1.0/fueleu/obligation-record.schema.json",
+    "schemaVersion": "1.0.0",
+    "artefactType": "RegulatoryObligationRecord",
+    "artefactId": "urn:uuid:3f8e4a21-7c1b-4d09-9e12-a5b6c7d8e901",
+    "producedAt": "2026-05-15T09:00:00Z",
+    "producerIdentity": {
+      "system": "ShipCompliance Pro",
+      "systemVersion": "3.1.0",
+      "organisation": "Nordic Maritime GmbH"
+    },
+    "regulatoryContext": {
+      "regulation": "FuelEU Maritime",
+      "regulatoryBody": "EMSA",
+      "jurisdiction": "EU",
+      "applicablePeriod": { "startDate": "2025-01-01", "endDate": "2025-12-31" }
+    }
+  },
+  "obligation": {
+    "obligationType": "GHG_INTENSITY_COMPLIANCE",
+    "targetEntity": { "entityType": "vessel", "entityId": "IMO:9876543" },
+    "thresholds": [{ "metric": "GHG_INTENSITY_WTW", "value": 91.16, "unit": "gCO2eq/MJ" }]
+  }
+}</code></pre>
+    <div style="text-align:center;margin-top:2rem;">
+      <a href="developer.html" class="btn btn--primary">Full Developer Guide →</a>
+    </div>
+  </div>
+</section>
+
+<!-- DESIGN PARTNER CTA -->
+<section class="section section--alt">
+  <div class="container" style="text-align:center;max-width:720px;">
+    <h2 style="margin-bottom:1rem;">Become a Founding Design Partner</h2>
+    <p style="font-size:1.1rem;color:var(--text-secondary);margin-bottom:2rem;">We are working with a small cohort of forward-looking compliance technology vendors to shape ARDS v1.1. Design partners get early access to domain packs, reduced certification fees, and a seat at the working group table.</p>
+    <div style="display:flex;gap:1rem;justify-content:center;flex-wrap:wrap;">
+      <a href="mailto:standards@axiomordo.com?subject=ARDS Design Partner Enquiry" class="btn btn--primary btn--lg">Express Interest</a>
+      <a href="governance.html#working-group" class="btn btn--outline btn--lg">Working Group →</a>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer class="footer">
+  <div class="footer__inner">
+    <div class="footer__col">
+      <div class="footer__logo">ARDS</div>
+      <p class="footer__tagline">The open standard for regulatory compliance artefacts.</p>
+      <p style="font-size:0.8rem;color:rgba(255,255,255,0.4);margin-top:1rem;">© 2026 AxiomOrdo Group. Licensed under AOSL-1.0.</p>
+    </div>
+    <div class="footer__col">
+      <div class="footer__heading">Standard</div>
+      <a href="specification.html" class="footer__link">Specification v1.0</a>
+      <a href="specification.html#changelog" class="footer__link">Changelog</a>
+      <a href="governance.html#rfc" class="footer__link">RFC Process</a>
+      <a href="governance.html" class="footer__link">Governance</a>
+    </div>
+    <div class="footer__col">
+      <div class="footer__heading">Tools</div>
+      <a href="developer.html#validator" class="footer__link">ards-validate CLI</a>
+      <a href="registry.html" class="footer__link">Schema Registry</a>
+      <a href="developer.html" class="footer__link">Quickstart Guide</a>
+      <a href="developer.html#examples" class="footer__link">Example Artefacts</a>
+    </div>
+    <div class="footer__col">
+      <div class="footer__heading">Certification</div>
+      <a href="certification.html" class="footer__link">Overview</a>
+      <a href="certification.html#apply" class="footer__link">Apply</a>
+      <a href="certification.html#directory" class="footer__link">Certified Directory</a>
+      <a href="certification.html#fees" class="footer__link">Fees</a>
+    </div>
+  </div>
+  <div class="footer__bottom">
+    <span>standards@axiomordo.com</span>
+    <span>registry.axiomordo.com</span>
+    <span>schema.axiomordo.com</span>
+  </div>
+</footer>
+
+</body>
+</html>

@@ -1,0 +1,374 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ARDS Developer Guide — Quickstart, Validator &amp; Examples</title>
+  <meta name="description" content="Get started with ARDS in minutes. Install ards-validate, build your first conformant artefact, and test against any conformance level.">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<nav class="nav">
+  <div class="nav__inner">
+    <a href="index.html" class="nav__logo">ARDS</a>
+    <div class="nav__links">
+      <a href="specification.html">Specification</a>
+      <a href="certification.html">Certification</a>
+      <a href="registry.html">Registry</a>
+      <a href="developer.html" class="active">Developers</a>
+      <a href="governance.html">Governance</a>
+    </div>
+    <a href="certification.html#apply" class="btn btn--sm">Get Certified</a>
+  </div>
+</nav>
+
+<div class="page-hero">
+  <div class="container">
+    <div class="badge badge--teal" style="margin-bottom:1rem;">Developer Guide</div>
+    <h1>Build on ARDS</h1>
+    <p>Everything you need to produce, validate, and integrate ARDS-conformant artefacts. From your first JSON file to production certification.</p>
+  </div>
+</div>
+
+<!-- QUICKSTART -->
+<section class="section">
+  <div class="container">
+    <div class="section-header">
+      <h2>Quickstart — Five Minutes to Conformance</h2>
+    </div>
+    <div class="steps">
+      <div class="step">
+        <div class="step__number">1</div>
+        <h3>Get ards-validate</h3>
+        <p>The official ARDS validator is a single Python 3 file with no dependencies. Download and run it anywhere Python is available.</p>
+        <pre><code># Download
+curl -O https://tools.axiomordo.com/ards-validate/ards_validate.py
+
+# Or clone the repo
+git clone https://github.com/axiomordo/ards-validate.git</code></pre>
+      </div>
+      <div class="step">
+        <div class="step__number">2</div>
+        <h3>Create Your First Artefact</h3>
+        <p>Every ARDS artefact starts with the <code>ards:meta</code> envelope. Save the example below as <code>my-artefact.json</code>.</p>
+      </div>
+      <div class="step">
+        <div class="step__number">3</div>
+        <h3>Validate It</h3>
+        <pre><code>python3 ards_validate.py my-artefact.json --level core-conformant</code></pre>
+        <p>A passing result looks like this:</p>
+        <pre><code>ARDS Validator v1.0.0
+File: my-artefact.json
+
+✓  CONFORMANT at level: core-conformant
+   Artefact Type : RegulatoryObligationRecord
+   Artefact ID   : urn:uuid:3f8e4a21-7c1b-4d09-9e12-a5b6c7d8e901
+   ARDS Version  : 1.0.0
+   Errors        : 0
+   Warnings      : 0</code></pre>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- VALIDATOR REFERENCE -->
+<section class="section section--alt" id="validator">
+  <div class="container">
+    <div class="section-header">
+      <h2>ards-validate CLI Reference</h2>
+      <p>The official ARDS validator. Pure Python 3. No dependencies. Validates artefacts against any conformance level.</p>
+    </div>
+    <h3>Usage</h3>
+    <pre><code>python3 ards_validate.py &lt;file&gt; [options]
+python3 ards_validate.py --batch &lt;directory&gt; [options]
+
+Options:
+  --level    schema-valid | core-conformant | extended-conformant
+             Default: core-conformant
+  --output   human | json | summary
+             Default: human
+  --strict   Treat warnings as errors
+  --quiet    Suppress output; use exit code only
+  --version  Print version and exit
+  --help     Show help</code></pre>
+
+    <h3 style="margin-top:2rem;">Exit Codes</h3>
+    <table>
+      <thead><tr><th>Code</th><th>Meaning</th></tr></thead>
+      <tbody>
+        <tr><td><code>0</code></td><td>Artefact is conformant at the specified level</td></tr>
+        <tr><td><code>1</code></td><td>Artefact is non-conformant (one or more errors)</td></tr>
+        <tr><td><code>2</code></td><td>Validator error (file not found, invalid JSON, etc.)</td></tr>
+      </tbody>
+    </table>
+
+    <h3 style="margin-top:2rem;">JSON Output Mode</h3>
+    <pre><code>python3 ards_validate.py artefact.json --output json | jq .
+
+{
+  "file": "artefact.json",
+  "conformant": true,
+  "level": "core-conformant",
+  "artefactType": "RegulatoryObligationRecord",
+  "artefactId": "urn:uuid:3f8e4a21-7c1b-4d09-9e12-a5b6c7d8e901",
+  "ardsVersion": "1.0.0",
+  "errors": [],
+  "warnings": []
+}</code></pre>
+
+    <h3 style="margin-top:2rem;">Batch Mode</h3>
+    <pre><code># Validate every .json file in a directory
+python3 ards_validate.py --batch ./artefacts/ --output summary
+
+File                          Level           Result    Errors  Warnings
+---                           ---             ---       ---     ---
+obligation-record.json        core-conformant PASS      0       0
+evidence-artefact.json        core-conformant PASS      0       1
+compliance-verdict.json       core-conformant PASS      0       0
+invalid-missing-fields.json   core-conformant FAIL      14      0
+
+Summary: 3 passed / 1 failed / 0 errors</code></pre>
+
+    <h3 style="margin-top:2rem;">CI/CD Integration</h3>
+    <pre><code># GitHub Actions example
+- name: Validate ARDS artefacts
+  run: |
+    python3 ards_validate.py --batch ./compliance-outputs/ \
+      --level core-conformant \
+      --output json \
+      --strict</code></pre>
+  </div>
+</section>
+
+<!-- ERROR CODES -->
+<section class="section">
+  <div class="container">
+    <div class="section-header">
+      <h2>Error Code Reference</h2>
+      <p>Every validation error carries a structured code. Use these to implement targeted fixes in your producer logic.</p>
+    </div>
+    <table>
+      <thead><tr><th>Code</th><th>Severity</th><th>Description</th></tr></thead>
+      <tbody>
+        <tr><td><code>ARDS-001</code></td><td>Error</td><td>Input is not a JSON object</td></tr>
+        <tr><td><code>ARDS-002</code></td><td>Error</td><td>Missing required top-level key <code>ards:meta</code></td></tr>
+        <tr><td><code>ARDS-010</code></td><td>Error</td><td>Required field missing from <code>ards:meta</code></td></tr>
+        <tr><td><code>ARDS-011</code></td><td>Error</td><td>Invalid <code>ardsVersion</code> — must be SemVer format</td></tr>
+        <tr><td><code>ARDS-013</code></td><td>Error</td><td>Invalid <code>schemaVersion</code> — must be SemVer format</td></tr>
+        <tr><td><code>ARDS-014</code></td><td>Error</td><td>Invalid <code>artefactType</code> — not a recognised enum value</td></tr>
+        <tr><td><code>ARDS-015</code></td><td>Error</td><td>Invalid <code>artefactId</code> — must be <code>urn:uuid:{uuid-v4}</code></td></tr>
+        <tr><td><code>ARDS-016</code></td><td>Error</td><td>Invalid <code>producedAt</code> — must be ISO 8601 with timezone</td></tr>
+        <tr><td><code>ARDS-030</code></td><td>Error</td><td>Missing <code>producerIdentity.system</code></td></tr>
+        <tr><td><code>ARDS-031</code></td><td>Error</td><td>Missing <code>producerIdentity.organisation</code></td></tr>
+        <tr><td><code>ARDS-040</code></td><td>Error</td><td>Missing <code>regulatoryContext.regulation</code></td></tr>
+        <tr><td><code>ARDS-041</code></td><td>Error</td><td>Missing <code>regulatoryContext.regulatoryBody</code></td></tr>
+        <tr><td><code>ARDS-042</code></td><td>Error</td><td>Missing <code>regulatoryContext.jurisdiction</code></td></tr>
+        <tr><td><code>ARDS-043</code></td><td>Error</td><td>Missing <code>regulatoryContext.applicablePeriod</code></td></tr>
+        <tr><td><code>ARDS-044</code></td><td>Error</td><td>Missing <code>applicablePeriod.startDate</code></td></tr>
+        <tr><td><code>ARDS-045</code></td><td>Error</td><td>Missing <code>applicablePeriod.endDate</code></td></tr>
+        <tr><td><code>ARDS-046</code></td><td>Error</td><td><code>startDate</code> is after <code>endDate</code></td></tr>
+        <tr><td><code>ARDS-W011</code></td><td>Warning</td><td><code>ardsVersion</code> is not the current stable version (1.0.0)</td></tr>
+        <tr><td><code>ARDS-W030</code></td><td>Warning</td><td><code>producerIdentity.systemVersion</code> not present (SHOULD)</td></tr>
+        <tr><td><code>ARDS-W600</code></td><td>Warning</td><td><code>certificationId</code> not present — cannot verify producer certification</td></tr>
+      </tbody>
+    </table>
+  </div>
+</section>
+
+<!-- EXAMPLES -->
+<section class="section section--alt" id="examples">
+  <div class="container">
+    <div class="section-header">
+      <h2>Example Artefacts</h2>
+      <p>Reference implementations for all six artefact types. All examples pass <code>ards-validate --level core-conformant</code>.</p>
+    </div>
+
+    <h3>Regulatory Obligation Record (FuelEU)</h3>
+    <pre><code>{
+  "ards:meta": {
+    "ardsVersion": "1.0.0",
+    "schemaId": "https://schema.axiomordo.com/ards/1.0/fueleu/obligation-record.schema.json",
+    "schemaVersion": "1.0.0",
+    "artefactType": "RegulatoryObligationRecord",
+    "artefactId": "urn:uuid:3f8e4a21-7c1b-4d09-9e12-a5b6c7d8e901",
+    "producedAt": "2026-05-15T09:00:00Z",
+    "producerIdentity": {
+      "system": "ShipCompliance Pro",
+      "systemVersion": "3.1.0",
+      "organisation": "Nordic Maritime GmbH"
+    },
+    "regulatoryContext": {
+      "regulation": "FuelEU Maritime",
+      "regulatoryBody": "EMSA",
+      "jurisdiction": "EU",
+      "applicablePeriod": { "startDate": "2025-01-01", "endDate": "2025-12-31" }
+    }
+  },
+  "obligation": {
+    "obligationType": "GHG_INTENSITY_COMPLIANCE",
+    "targetEntity": { "entityType": "vessel", "entityId": "IMO:9876543" },
+    "thresholds": [{ "metric": "GHG_INTENSITY_WTW", "value": 91.16, "unit": "gCO2eq/MJ" }],
+    "regulatoryReference": "FuelEU Maritime Regulation, Article 4"
+  }
+}</code></pre>
+
+    <h3 style="margin-top:2rem;">Evidence Artefact (GHG Measurement)</h3>
+    <pre><code>{
+  "ards:meta": {
+    "ardsVersion": "1.0.0",
+    "schemaId": "https://schema.axiomordo.com/ards/1.0/evidence-artefact/evidence-artefact.schema.json",
+    "schemaVersion": "1.0.0",
+    "artefactType": "EvidenceArtefact",
+    "artefactId": "urn:uuid:7b2e9f41-3a8d-4c12-b5e7-d9f0a1b2c3d4",
+    "producedAt": "2026-01-20T14:30:00Z",
+    "producerIdentity": {
+      "system": "MeasurementPlatform",
+      "systemVersion": "2.0.1",
+      "organisation": "ClassNK Verification Services"
+    },
+    "regulatoryContext": {
+      "regulation": "FuelEU Maritime",
+      "regulatoryBody": "EMSA",
+      "jurisdiction": "EU",
+      "applicablePeriod": { "startDate": "2025-01-01", "endDate": "2025-12-31" }
+    }
+  },
+  "evidence": {
+    "evidenceType": "MEASUREMENT",
+    "sourceType": "THIRD_PARTY_VERIFIED",
+    "obligationRef": "urn:uuid:3f8e4a21-7c1b-4d09-9e12-a5b6c7d8e901",
+    "verificationStatus": "VERIFIED",
+    "verifierOrganisation": "ClassNK",
+    "evidenceData": {
+      "ghgIntensityWtW": 88.4,
+      "unit": "gCO2eq/MJ",
+      "measurementPeriod": { "startDate": "2025-01-01", "endDate": "2025-12-31" }
+    }
+  }
+}</code></pre>
+
+    <h3 style="margin-top:2rem;">Compliance Verdict</h3>
+    <pre><code>{
+  "ards:meta": {
+    "ardsVersion": "1.0.0",
+    "schemaId": "https://schema.axiomordo.com/ards/1.0/compliance-verdict/compliance-verdict.schema.json",
+    "schemaVersion": "1.0.0",
+    "artefactType": "ComplianceVerdict",
+    "artefactId": "urn:uuid:c4d5e6f7-8a9b-4c0d-be12-f3a4b5c6d7e8",
+    "producedAt": "2026-02-01T10:00:00Z",
+    "producerIdentity": {
+      "system": "ComplianceEngine",
+      "systemVersion": "1.5.0",
+      "organisation": "Nordic Maritime GmbH"
+    },
+    "regulatoryContext": {
+      "regulation": "FuelEU Maritime",
+      "regulatoryBody": "EMSA",
+      "jurisdiction": "EU",
+      "applicablePeriod": { "startDate": "2025-01-01", "endDate": "2025-12-31" }
+    }
+  },
+  "verdict": {
+    "outcome": "COMPLIANT",
+    "obligationRef": "urn:uuid:3f8e4a21-7c1b-4d09-9e12-a5b6c7d8e901",
+    "evidenceRefs": ["urn:uuid:7b2e9f41-3a8d-4c12-b5e7-d9f0a1b2c3d4"],
+    "determinedAt": "2026-02-01T10:00:00Z",
+    "determinedBy": { "type": "AUTOMATED", "system": "ComplianceEngine" }
+  }
+}</code></pre>
+  </div>
+</section>
+
+<!-- INTEGRATION GUIDE -->
+<section class="section">
+  <div class="container">
+    <div class="section-header">
+      <h2>Integration Patterns</h2>
+    </div>
+    <div class="grid grid--3">
+      <div class="card">
+        <h3>Generate &amp; Embed</h3>
+        <p>If you're building a compliance SaaS, generate ARDS artefacts as your native output format. Embed your <code>certificationId</code> in every <code>ards:meta</code> envelope to signal certified status automatically.</p>
+        <p style="font-size:0.85rem;color:var(--text-secondary);margin-top:0.75rem;">Target cert level: L4 Certified Generator</p>
+      </div>
+      <div class="card">
+        <h3>Ingest &amp; Process</h3>
+        <p>If you're building a data pipeline or regulatory portal, implement an ARDS consumer. Validate incoming artefacts with <code>ards-validate</code> before processing. Reject non-conformant inputs gracefully.</p>
+        <p style="font-size:0.85rem;color:var(--text-secondary);margin-top:0.75rem;">Target cert level: L5 Certified Consumer</p>
+      </div>
+      <div class="card">
+        <h3>Full Platform</h3>
+        <p>If you're building a compliance operating system, implement both generation and consumption. Maintain a live provenance graph using Trace Bundles. Export sealed Audit Packages for regulators.</p>
+        <p style="font-size:0.85rem;color:var(--text-secondary);margin-top:0.75rem;">Target cert level: L6 Certified Platform</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FAQ -->
+<section class="section section--alt">
+  <div class="container">
+    <div class="section-header">
+      <h2>Frequently Asked Questions</h2>
+    </div>
+    <div style="display:flex;flex-direction:column;gap:1.5rem;max-width:800px;margin:0 auto;">
+      <div class="card">
+        <strong>Do I need permission to implement ARDS?</strong>
+        <p style="margin-top:0.5rem;color:var(--text-secondary);">No. ARDS is published under AOSL-1.0, which grants a free, perpetual, irrevocable licence to implement, use, and distribute ARDS. No registration, notification, or fee is required to implement the standard.</p>
+      </div>
+      <div class="card">
+        <strong>Is certification mandatory?</strong>
+        <p style="margin-top:0.5rem;color:var(--text-secondary);">No. L1–L2 are self-declared and free. L3–L6 certification is optional but strongly recommended if you are selling to enterprise buyers or regulated industries. Certification is the market signal of technical credibility.</p>
+      </div>
+      <div class="card">
+        <strong>Can I add my own fields to ARDS artefacts?</strong>
+        <p style="margin-top:0.5rem;color:var(--text-secondary);">Yes. Use the <code>x-vendor:</code> prefix convention for unofficial extensions, or register a namespace via the RFC process. Unregistered fields with the <code>x-</code> prefix are always allowed.</p>
+      </div>
+      <div class="card">
+        <strong>What happens if the standard changes?</strong>
+        <p style="margin-top:0.5rem;color:var(--text-secondary);">ARDS uses SemVer. Minor and patch releases are backward-compatible. Major version changes require a 24-month deprecation notice. All prior versions remain permanently available at their canonical schema URIs.</p>
+      </div>
+      <div class="card">
+        <strong>How do I propose a new domain pack?</strong>
+        <p style="margin-top:0.5rem;color:var(--text-secondary);">Submit an RFC via <a href="governance.html#rfc">the RFC process</a>. Include a description of the regulatory domain, the schema families required, and a draft of at least the obligation-record schema. AxiomOrdo will assign a domain working group chair.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer class="footer">
+  <div class="footer__inner">
+    <div class="footer__col">
+      <div class="footer__logo">ARDS</div>
+      <p class="footer__tagline">The open standard for regulatory compliance artefacts.</p>
+      <p style="font-size:0.8rem;color:rgba(255,255,255,0.4);margin-top:1rem;">© 2026 AxiomOrdo Group. Licensed under AOSL-1.0.</p>
+    </div>
+    <div class="footer__col">
+      <div class="footer__heading">Standard</div>
+      <a href="specification.html" class="footer__link">Specification v1.0</a>
+      <a href="governance.html#rfc" class="footer__link">RFC Process</a>
+      <a href="governance.html" class="footer__link">Governance</a>
+    </div>
+    <div class="footer__col">
+      <div class="footer__heading">Tools</div>
+      <a href="#validator" class="footer__link">ards-validate CLI</a>
+      <a href="registry.html" class="footer__link">Schema Registry</a>
+      <a href="#examples" class="footer__link">Example Artefacts</a>
+    </div>
+    <div class="footer__col">
+      <div class="footer__heading">Certification</div>
+      <a href="certification.html" class="footer__link">Overview</a>
+      <a href="certification.html#apply" class="footer__link">Apply</a>
+      <a href="certification.html#directory" class="footer__link">Certified Directory</a>
+    </div>
+  </div>
+  <div class="footer__bottom">
+    <span>standards@axiomordo.com</span>
+    <span>registry.axiomordo.com</span>
+    <span>schema.axiomordo.com</span>
+  </div>
+</footer>
+
+</body>
+</html>

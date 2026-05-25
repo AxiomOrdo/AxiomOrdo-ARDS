@@ -1,0 +1,397 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ARDS Certification — AxiomOrdo Regulatory Data Standard</title>
+  <meta name="description" content="Become ARDS Certified. Six conformance levels, independent assessment by AxiomOrdo, and a machine-readable Certification Token for your product.">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<nav class="nav">
+  <div class="nav__inner">
+    <a href="index.html" class="nav__logo">ARDS</a>
+    <div class="nav__links">
+      <a href="specification.html">Specification</a>
+      <a href="certification.html" class="active">Certification</a>
+      <a href="registry.html">Registry</a>
+      <a href="developer.html">Developers</a>
+      <a href="governance.html">Governance</a>
+    </div>
+    <a href="#apply" class="btn btn--sm">Get Certified</a>
+  </div>
+</nav>
+
+<div class="page-hero">
+  <div class="container">
+    <div class="badge badge--teal" style="margin-bottom:1rem;">ARDS-CERT-001 · Version 1.0</div>
+    <h1>ARDS Certification Programme</h1>
+    <p>Independent, market-trusted certification for compliance software. The ARDS Certification Mark signals to regulators, enterprise buyers, and system integrators that your product speaks the standard.</p>
+  </div>
+</div>
+
+<!-- CERTIFICATION LEVELS -->
+<section class="section">
+  <div class="container">
+    <div class="section-header">
+      <h2>Six Certification Levels</h2>
+      <p>Each level builds on the last. L1–L2 are self-declared. L3–L6 require AxiomOrdo assessment.</p>
+    </div>
+
+    <div class="cert-card">
+      <div class="cert-card__head">
+        <div class="cert-card__level">L1</div>
+        <div>
+          <div class="cert-card__name">Schema-Valid</div>
+          <div class="cert-card__code">ARDS-SV</div>
+        </div>
+        <div class="cert-card__fee cert-card__fee--free">Self-declare · Free</div>
+      </div>
+      <div class="cert-card__body">
+        <div class="cert-card__desc">Your artefacts validate without errors against the JSON Schema identified in <code>ards:meta.schemaId</code>.</div>
+        <div class="cert-card__reqs">
+          <div class="cert-card__req">✓ Pass JSON Schema validation for all produced artefacts</div>
+          <div class="cert-card__req">✓ Declare schema URI correctly in <code>ards:meta.schemaId</code></div>
+          <div class="cert-card__req">✓ Run <code>ards-validate --level schema-valid</code> with zero errors</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="cert-card">
+      <div class="cert-card__head">
+        <div class="cert-card__level">L2</div>
+        <div>
+          <div class="cert-card__name">ARDS Core Conformant</div>
+          <div class="cert-card__code">ARDS-CC</div>
+        </div>
+        <div class="cert-card__fee cert-card__fee--free">Self-declare · Free</div>
+      </div>
+      <div class="cert-card__body">
+        <div class="cert-card__desc">Your artefacts implement the full <code>ards:meta</code> envelope with all required fields meeting normative format requirements.</div>
+        <div class="cert-card__reqs">
+          <div class="cert-card__req">✓ All nine required <code>ards:meta</code> fields present and correctly formatted</div>
+          <div class="cert-card__req">✓ UUID v4 artefact IDs in <code>urn:uuid:</code> format</div>
+          <div class="cert-card__req">✓ ISO 8601 timestamps with timezone offset</div>
+          <div class="cert-card__req">✓ Valid artefactType enumeration value</div>
+          <div class="cert-card__req">✓ Pass <code>ards-validate --level core-conformant</code> with zero errors</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="cert-card">
+      <div class="cert-card__head">
+        <div class="cert-card__level">L3</div>
+        <div>
+          <div class="cert-card__name">ARDS Extended Conformant</div>
+          <div class="cert-card__code">ARDS-EC</div>
+        </div>
+        <div class="cert-card__fee">Founding: £8,000</div>
+      </div>
+      <div class="cert-card__body">
+        <div class="cert-card__desc">Implements provenance linking, domain-specific extensions, and all SHOULD requirements. Assessed by AxiomOrdo technical reviewers.</div>
+        <div class="cert-card__reqs">
+          <div class="cert-card__req">✓ Full L2 conformance</div>
+          <div class="cert-card__req">✓ Trace Bundle with provenance links across artefact lifecycle</div>
+          <div class="cert-card__req">✓ Domain pack schema compliance (if applicable)</div>
+          <div class="cert-card__req">✓ All SHOULD requirements satisfied</div>
+          <div class="cert-card__req">✓ Pass extended conformance test suite</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="cert-card">
+      <div class="cert-card__head">
+        <div class="cert-card__level">L4</div>
+        <div>
+          <div class="cert-card__name">ARDS Certified Generator</div>
+          <div class="cert-card__code">ARDS-CG</div>
+        </div>
+        <div class="cert-card__fee">Founding: £25,000–£50,000</div>
+      </div>
+      <div class="cert-card__body">
+        <div class="cert-card__desc">Your tool produces ARDS artefacts at L3 conformance across all claimed artefact types and domain packs. Earns the ARDS Certified Generator mark.</div>
+        <div class="cert-card__reqs">
+          <div class="cert-card__req">✓ Full L3 conformance for all claimed output types</div>
+          <div class="cert-card__req">✓ Pass generator conformance test suite (100% pass rate)</div>
+          <div class="cert-card__req">✓ Produce valid Certification Token reference in output artefacts</div>
+          <div class="cert-card__req">✓ Annual renewal with spot-check audit</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="cert-card">
+      <div class="cert-card__head">
+        <div class="cert-card__level">L5</div>
+        <div>
+          <div class="cert-card__name">ARDS Certified Consumer</div>
+          <div class="cert-card__code">ARDS-CS</div>
+        </div>
+        <div class="cert-card__fee">Founding: £5,000–£10,000 / domain</div>
+      </div>
+      <div class="cert-card__body">
+        <div class="cert-card__desc">Your tool correctly ingests, validates, and processes ARDS artefacts produced by any certified generator across all claimed domain packs.</div>
+        <div class="cert-card__reqs">
+          <div class="cert-card__req">✓ Interoperability test with AxiomOrdo reference artefacts</div>
+          <div class="cert-card__req">✓ Correct handling of all six artefact types</div>
+          <div class="cert-card__req">✓ Provenance chain validation</div>
+          <div class="cert-card__req">✓ Graceful error handling for non-conformant inputs</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="cert-card">
+      <div class="cert-card__head">
+        <div class="cert-card__level" style="background:var(--navy);">L6</div>
+        <div>
+          <div class="cert-card__name">ARDS Certified Platform</div>
+          <div class="cert-card__code">ARDS-CP</div>
+        </div>
+        <div class="cert-card__fee">Founding: £50,000–£100,000</div>
+      </div>
+      <div class="cert-card__body">
+        <div class="cert-card__desc">The highest tier. Your platform generates, stores, traces, and exports ARDS artefacts end-to-end. Signals full ecosystem leadership to enterprise buyers and regulators.</div>
+        <div class="cert-card__reqs">
+          <div class="cert-card__req">✓ Full L4 and L5 conformance</div>
+          <div class="cert-card__req">✓ Live schema registry integration with <code>schema.axiomordo.com</code></div>
+          <div class="cert-card__req">✓ Regulator-ready export: sealed, signed Audit Packages</div>
+          <div class="cert-card__req">✓ Annual re-certification with full audit</div>
+          <div class="cert-card__req">✓ Featured in the ARDS Certified Directory</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CERTIFICATION TOKEN -->
+<section class="section section--alt">
+  <div class="container">
+    <div class="section-header">
+      <h2>The Machine-Readable Certification Token</h2>
+      <p>Every certified product receives a cryptographically signed JSON token. Embed it in your artefacts. Link it from your docs. Let machines verify your certification status automatically.</p>
+    </div>
+    <pre><code>{
+  "tokenType": "ARDS_CERTIFICATION_TOKEN",
+  "tokenVersion": "1.0",
+  "certificateId": "ards-cert-2026-000001",
+  "holder": {
+    "organisation": "Your Company Ltd",
+    "product": "CompliancePro",
+    "productVersion": "4.0.0"
+  },
+  "certification": {
+    "level": "ARDS_CERTIFIED_GENERATOR",
+    "levelCode": "ARDS-CG-001",
+    "ardsVersion": "1.0.0",
+    "domainPacks": ["FuelEU", "CBAM"],
+    "schemaFamilies": ["obligation-record", "evidence-artefact", "compliance-verdict"]
+  },
+  "validity": {
+    "issuedAt": "2026-06-01T00:00:00Z",
+    "expiresAt": "2027-06-01T00:00:00Z",
+    "foundingPartner": true
+  },
+  "registry": {
+    "directoryUrl": "https://registry.axiomordo.com/certified/your-company-ltd",
+    "verificationUrl": "https://registry.axiomordo.com/verify/ards-cert-2026-000001",
+    "tokenUrl": "https://registry.axiomordo.com/tokens/ards-cert-2026-000001.json"
+  },
+  "issuedBy": "AxiomOrdo Group",
+  "signature": "&lt;AxiomOrdo-signed-hash&gt;"
+}</code></pre>
+  </div>
+</section>
+
+<!-- APPLICATION PROCESS -->
+<section class="section" id="apply">
+  <div class="container">
+    <div class="section-header">
+      <h2>How to Apply</h2>
+      <p>Eight stages from application to issued token. L1–L2 are self-declared. L3–L6 go through formal assessment.</p>
+    </div>
+    <div class="steps">
+      <div class="step">
+        <div class="step__number">1</div>
+        <h3>Pre-Application</h3>
+        <p>Complete the product readiness checklist and run <code>ards-validate</code> against your outputs. Download the assessment guide from the registry.</p>
+      </div>
+      <div class="step">
+        <div class="step__number">2</div>
+        <h3>Application Form</h3>
+        <p>Submit via <a href="mailto:standards@axiomordo.com">standards@axiomordo.com</a>. Include product description, claimed conformance level, target domain packs, and a sample artefact set.</p>
+      </div>
+      <div class="step">
+        <div class="step__number">3</div>
+        <h3>Scoping Call</h3>
+        <p>30-minute call with the AxiomOrdo Certification Committee to confirm scope, agree the test plan, and schedule the assessment window.</p>
+      </div>
+      <div class="step">
+        <div class="step__number">4</div>
+        <h3>Technical Assessment</h3>
+        <p>AxiomOrdo runs your product against the conformance test suite. You receive a detailed test report with pass/fail status for every test case.</p>
+      </div>
+      <div class="step">
+        <div class="step__number">5</div>
+        <h3>Remediation (if needed)</h3>
+        <p>One remediation cycle is included. Fix any failures and re-submit the affected test cases within 60 days at no additional cost.</p>
+      </div>
+      <div class="step">
+        <div class="step__number">6</div>
+        <h3>Decision</h3>
+        <p>The Certification Committee issues a formal decision. Successful applicants receive a Certification Report and a draft token for review.</p>
+      </div>
+      <div class="step">
+        <div class="step__number">7</div>
+        <h3>Token Issuance</h3>
+        <p>On fee confirmation, AxiomOrdo signs and publishes your Certification Token to the registry. You receive the signed JSON file for embedding.</p>
+      </div>
+      <div class="step">
+        <div class="step__number">8</div>
+        <h3>Directory Listing</h3>
+        <p>Your product appears in the ARDS Certified Directory at <code>registry.axiomordo.com/certified</code>, searchable by level, domain pack, and jurisdiction.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FEES -->
+<section class="section section--alt" id="fees">
+  <div class="container">
+    <div class="section-header">
+      <h2>Fee Schedule — Founding Period</h2>
+      <p>Founding-period pricing is available to the first 20 certified products. These rates will not be offered after the initial cohort closes.</p>
+    </div>
+    <table>
+      <thead>
+        <tr><th>Level</th><th>Name</th><th>Founding Fee</th><th>Annual Renewal</th><th>Includes</th></tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><span class="badge badge--teal">L1–L2</span></td>
+          <td>Schema-Valid / Core Conformant</td>
+          <td>Free</td>
+          <td>Free</td>
+          <td>Self-declaration badge, validator access</td>
+        </tr>
+        <tr>
+          <td><span class="badge badge--blue">L3</span></td>
+          <td>Extended Conformant</td>
+          <td>£8,000</td>
+          <td>£3,000</td>
+          <td>Assessment, report, token, directory listing</td>
+        </tr>
+        <tr>
+          <td><span class="badge badge--blue">L4</span></td>
+          <td>Certified Generator</td>
+          <td>£25,000–£50,000</td>
+          <td>£8,000</td>
+          <td>Full test suite, token, mark licence, directory</td>
+        </tr>
+        <tr>
+          <td><span class="badge badge--navy">L5</span></td>
+          <td>Certified Consumer</td>
+          <td>£5,000–£10,000 / domain</td>
+          <td>£3,000 / domain</td>
+          <td>Interop testing, token, domain badge</td>
+        </tr>
+        <tr>
+          <td><span class="badge badge--navy">L6</span></td>
+          <td>Certified Platform</td>
+          <td>£50,000–£100,000</td>
+          <td>£20,000</td>
+          <td>Full audit, premier directory placement, co-marketing</td>
+        </tr>
+      </tbody>
+    </table>
+    <div class="note" style="margin-top:1.5rem;">Fees quoted ex-VAT. Enterprise and volume pricing available. Contact <a href="mailto:standards@axiomordo.com">standards@axiomordo.com</a> for a custom quote.</div>
+  </div>
+</section>
+
+<!-- DIRECTORY -->
+<section class="section" id="directory">
+  <div class="container">
+    <div class="section-header">
+      <h2>ARDS Certified Directory</h2>
+      <p>The authoritative public registry of ARDS-certified products and platforms. Updated in real time as certifications are issued and renewed.</p>
+    </div>
+    <div class="card" style="text-align:center;padding:3rem;">
+      <div style="font-size:3rem;margin-bottom:1rem;">🏆</div>
+      <h3 style="margin-bottom:0.5rem;">Founding Cohort Open</h3>
+      <p style="color:var(--text-secondary);max-width:480px;margin:0 auto 1.5rem;">Be among the first products listed. Founding partners receive premier directory placement, co-marketing support, and the lowest certification fees we will ever offer.</p>
+      <a href="mailto:standards@axiomordo.com?subject=ARDS Certification Application" class="btn btn--primary">Apply Now →</a>
+    </div>
+  </div>
+</section>
+
+<!-- TRUST MARK USAGE -->
+<section class="section section--alt">
+  <div class="container">
+    <div class="section-header">
+      <h2>Trust Mark Usage Policy</h2>
+      <p>The ARDS certification marks are licensed exclusively to holders of valid Certification Tokens. Use is governed by the following rules.</p>
+    </div>
+    <div class="grid grid--3">
+      <div class="card">
+        <h3>✓ Permitted</h3>
+        <ul style="line-height:2;padding-left:1.2rem;font-size:0.9rem;">
+          <li>Use on product pages, data sheets, and sales materials</li>
+          <li>Embed the Certification Token in your ARDS artefacts</li>
+          <li>Reference certification level in RFP responses</li>
+          <li>Display on integration partner listings</li>
+        </ul>
+      </div>
+      <div class="card">
+        <h3>✗ Not Permitted</h3>
+        <ul style="line-height:2;padding-left:1.2rem;font-size:0.9rem;">
+          <li>Use after token expiry without renewal</li>
+          <li>Claim a higher level than certified</li>
+          <li>Apply marks to uncertified products or services</li>
+          <li>Modify or reproduce the mark artwork</li>
+        </ul>
+      </div>
+      <div class="card">
+        <h3>Verification</h3>
+        <p style="font-size:0.9rem;line-height:1.8;">Anyone can verify a certification token in real time at:</p>
+        <code style="display:block;background:var(--bg-alt);padding:0.75rem;border-radius:4px;font-size:0.8rem;margin-top:0.5rem;">registry.axiomordo.com/verify/{certificateId}</code>
+        <p style="font-size:0.9rem;margin-top:0.75rem;">The endpoint returns the full token JSON and current validity status.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer class="footer">
+  <div class="footer__inner">
+    <div class="footer__col">
+      <div class="footer__logo">ARDS</div>
+      <p class="footer__tagline">The open standard for regulatory compliance artefacts.</p>
+      <p style="font-size:0.8rem;color:rgba(255,255,255,0.4);margin-top:1rem;">© 2026 AxiomOrdo Group. Licensed under AOSL-1.0.</p>
+    </div>
+    <div class="footer__col">
+      <div class="footer__heading">Standard</div>
+      <a href="specification.html" class="footer__link">Specification v1.0</a>
+      <a href="governance.html#rfc" class="footer__link">RFC Process</a>
+      <a href="governance.html" class="footer__link">Governance</a>
+    </div>
+    <div class="footer__col">
+      <div class="footer__heading">Tools</div>
+      <a href="developer.html#validator" class="footer__link">ards-validate CLI</a>
+      <a href="registry.html" class="footer__link">Schema Registry</a>
+      <a href="developer.html" class="footer__link">Quickstart Guide</a>
+    </div>
+    <div class="footer__col">
+      <div class="footer__heading">Certification</div>
+      <a href="certification.html" class="footer__link">Overview</a>
+      <a href="#apply" class="footer__link">Apply</a>
+      <a href="#directory" class="footer__link">Certified Directory</a>
+      <a href="#fees" class="footer__link">Fees</a>
+    </div>
+  </div>
+  <div class="footer__bottom">
+    <span>standards@axiomordo.com</span>
+    <span>registry.axiomordo.com</span>
+    <span>schema.axiomordo.com</span>
+  </div>
+</footer>
+
+</body>
+</html>

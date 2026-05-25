@@ -1,0 +1,342 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ARDS Specification — ARDS-SPEC-001 v1.0</title>
+  <meta name="description" content="The normative ARDS v1.0 Specification. Defines all artefact types, required fields, conformance levels, and extension rules.">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<nav class="nav">
+  <div class="nav__inner">
+    <a href="index.html" class="nav__logo">ARDS</a>
+    <div class="nav__links">
+      <a href="specification.html" class="active">Specification</a>
+      <a href="certification.html">Certification</a>
+      <a href="registry.html">Registry</a>
+      <a href="developer.html">Developers</a>
+      <a href="governance.html">Governance</a>
+    </div>
+    <a href="certification.html#apply" class="btn btn--sm">Get Certified</a>
+  </div>
+</nav>
+
+<div class="page-hero">
+  <div class="container">
+    <div class="badge badge--teal" style="margin-bottom:1rem;">ARDS-SPEC-001 · First Edition</div>
+    <h1>ARDS v1.0 Specification</h1>
+    <p>The normative reference for the AxiomOrdo Regulatory Data Standard. This document defines all artefact types, required metadata, conformance levels, and extension rules.</p>
+    <div style="display:flex;gap:1rem;flex-wrap:wrap;margin-top:1.5rem;">
+      <span class="badge badge--teal">Status: PUBLISHED</span>
+      <span class="badge">Version: 1.0.0</span>
+      <span class="badge">Published: May 2026</span>
+      <span class="badge">Licence: AOSL-1.0</span>
+    </div>
+  </div>
+</div>
+
+<section class="section">
+  <div class="container">
+    <div style="display:grid;grid-template-columns:240px 1fr;gap:3rem;align-items:start;">
+
+      <!-- TOC SIDEBAR -->
+      <div style="position:sticky;top:5rem;">
+        <div style="background:var(--bg-alt);border-radius:8px;padding:1.5rem;">
+          <div style="font-size:0.75rem;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;color:var(--text-secondary);margin-bottom:1rem;">Contents</div>
+          <nav style="display:flex;flex-direction:column;gap:0.4rem;">
+            <a href="#scope" style="font-size:0.9rem;color:var(--text-secondary);text-decoration:none;padding:0.25rem 0;">1. Scope &amp; Purpose</a>
+            <a href="#normative" style="font-size:0.9rem;color:var(--text-secondary);text-decoration:none;padding:0.25rem 0;">2. Normative References</a>
+            <a href="#terms" style="font-size:0.9rem;color:var(--text-secondary);text-decoration:none;padding:0.25rem 0;">3. Terms &amp; Definitions</a>
+            <a href="#artefact-model" style="font-size:0.9rem;color:var(--text-secondary);text-decoration:none;padding:0.25rem 0;">4. Artefact Model</a>
+            <a href="#meta-envelope" style="font-size:0.9rem;color:var(--text-secondary);text-decoration:none;padding:0.25rem 0;">5. Meta Envelope</a>
+            <a href="#schemas" style="font-size:0.9rem;color:var(--text-secondary);text-decoration:none;padding:0.25rem 0;">6. Core Schema Set</a>
+            <a href="#conformance" style="font-size:0.9rem;color:var(--text-secondary);text-decoration:none;padding:0.25rem 0;">7. Conformance</a>
+            <a href="#extensions" style="font-size:0.9rem;color:var(--text-secondary);text-decoration:none;padding:0.25rem 0;">8. Extension Model</a>
+            <a href="#versioning" style="font-size:0.9rem;color:var(--text-secondary);text-decoration:none;padding:0.25rem 0;">9. Versioning</a>
+            <a href="#governance" style="font-size:0.9rem;color:var(--text-secondary);text-decoration:none;padding:0.25rem 0;">10. Governance</a>
+            <a href="#annexes" style="font-size:0.9rem;color:var(--text-secondary);text-decoration:none;padding:0.25rem 0;">Annexes A–D</a>
+            <a href="#changelog" style="font-size:0.9rem;color:var(--text-secondary);text-decoration:none;padding:0.25rem 0;">Changelog</a>
+          </nav>
+        </div>
+      </div>
+
+      <!-- MAIN CONTENT -->
+      <div>
+
+        <!-- 1. SCOPE -->
+        <div id="scope" style="margin-bottom:3rem;">
+          <h2>1. Scope &amp; Purpose</h2>
+          <p>This document constitutes the normative specification of the AxiomOrdo Regulatory Data Standard (ARDS), Version 1.0.0. It is identified by the document reference <strong>ARDS-SPEC-001</strong>.</p>
+          <p>ARDS defines the schema language, metadata model, artefact taxonomy, conformance framework, and extension rules for machine-readable regulatory compliance artefacts. It is designed to enable interoperability between compliance software systems, regulatory authorities, auditors, and data intermediaries operating across multiple regulatory regimes.</p>
+          <div class="note">
+            <strong>Normative Language:</strong> The key words SHALL, SHALL NOT, SHOULD, SHOULD NOT, MAY, and MAY NOT in this document are to be interpreted as described in RFC 2119. All requirements using SHALL are mandatory for the relevant conformance level.
+          </div>
+        </div>
+
+        <!-- 2. NORMATIVE REFERENCES -->
+        <div id="normative" style="margin-bottom:3rem;">
+          <h2>2. Normative References</h2>
+          <table>
+            <thead><tr><th>Reference</th><th>Title</th><th>Relevance</th></tr></thead>
+            <tbody>
+              <tr><td>RFC 4122</td><td>A Universally Unique IDentifier (UUID) URN Namespace</td><td>artefactId format</td></tr>
+              <tr><td>ISO 8601</td><td>Date and time format</td><td>All date/datetime fields</td></tr>
+              <tr><td>RFC 2119</td><td>Key words for use in RFCs to Indicate Requirement Levels</td><td>Normative language</td></tr>
+              <tr><td>JSON Schema Draft-07</td><td>JSON Schema: A Media Type for Describing JSON Documents</td><td>All ARDS schemas</td></tr>
+              <tr><td>SemVer 2.0.0</td><td>Semantic Versioning Specification</td><td>ardsVersion, schemaVersion</td></tr>
+              <tr><td>AOSL-1.0</td><td>AxiomOrdo Open Standard Licence</td><td>Licence for this specification</td></tr>
+            </tbody>
+          </table>
+        </div>
+
+        <!-- 3. TERMS -->
+        <div id="terms" style="margin-bottom:3rem;">
+          <h2>3. Terms &amp; Definitions</h2>
+          <table>
+            <thead><tr><th>Term</th><th>Definition</th></tr></thead>
+            <tbody>
+              <tr><td><strong>Artefact</strong></td><td>A discrete, structured data object conforming to an ARDS schema, representing a defined unit of compliance information.</td></tr>
+              <tr><td><strong>Artefact Type</strong></td><td>One of the six normative categories: ROR, EA, CV, TB, UCA, AP (see §4).</td></tr>
+              <tr><td><strong>ards:meta</strong></td><td>The required top-level metadata envelope present in every ARDS artefact.</td></tr>
+              <tr><td><strong>Conformance Level</strong></td><td>One of six progressive tiers defining the depth of ARDS compliance for an artefact or tool (see §7).</td></tr>
+              <tr><td><strong>Domain Pack</strong></td><td>A published set of ARDS extension schemas for a specific regulatory domain (e.g., FuelEU, CBAM).</td></tr>
+              <tr><td><strong>Producer</strong></td><td>A system or organisation that creates ARDS artefacts.</td></tr>
+              <tr><td><strong>Consumer</strong></td><td>A system or organisation that ingests and processes ARDS artefacts.</td></tr>
+              <tr><td><strong>Schema URI</strong></td><td>The canonical identifier for an ARDS schema, following the pattern <code>https://schema.axiomordo.com/ards/{version}/{family}/{name}.schema.json</code>.</td></tr>
+              <tr><td><strong>Certification Token</strong></td><td>A machine-readable, cryptographically signed JSON document issued by AxiomOrdo attesting conformance at a specific level.</td></tr>
+              <tr><td><strong>Regulatory Context</strong></td><td>The metadata block identifying the regulation, regulatory body, jurisdiction, and applicable period for an artefact.</td></tr>
+              <tr><td><strong>Provenance Chain</strong></td><td>The linked sequence of artefacts from obligation through evidence to verdict, maintained in a Trace Bundle.</td></tr>
+            </tbody>
+          </table>
+        </div>
+
+        <!-- 4. ARTEFACT MODEL -->
+        <div id="artefact-model" style="margin-bottom:3rem;">
+          <h2>4. Artefact Model</h2>
+          <p>ARDS defines six normative artefact types. Each type has a canonical schema, a defined role in the compliance lifecycle, and specific field requirements beyond the common <code>ards:meta</code> envelope.</p>
+          <table>
+            <thead>
+              <tr><th>Code</th><th>Full Name</th><th>Primary Role</th><th>Key Relationships</th></tr>
+            </thead>
+            <tbody>
+              <tr><td><code>ROR</code></td><td>Regulatory Obligation Record</td><td>Defines a specific regulatory obligation for an entity/period</td><td>Referenced by EA, CV</td></tr>
+              <tr><td><code>EA</code></td><td>Evidence Artefact</td><td>Carries structured evidence supporting a compliance claim</td><td>References ROR; referenced by TB, CV</td></tr>
+              <tr><td><code>CV</code></td><td>Compliance Verdict</td><td>Records the compliance outcome for an obligation</td><td>References ROR, EA; referenced by UCA, AP</td></tr>
+              <tr><td><code>TB</code></td><td>Trace Bundle</td><td>Machine-readable provenance graph</td><td>References ROR, EA, CV; referenced by AP</td></tr>
+              <tr><td><code>UCA</code></td><td>Unified Compliance Artefact</td><td>Portable submission-ready composite</td><td>Embeds ROR, EA, CV</td></tr>
+              <tr><td><code>AP</code></td><td>Audit Package</td><td>Sealed, signed archive for regulators</td><td>Embeds all types; carries digital signature</td></tr>
+            </tbody>
+          </table>
+        </div>
+
+        <!-- 5. META ENVELOPE -->
+        <div id="meta-envelope" style="margin-bottom:3rem;">
+          <h2>5. The <code>ards:meta</code> Envelope</h2>
+          <p>Every ARDS artefact SHALL contain a top-level key <code>"ards:meta"</code> whose value is an object containing the fields defined in this section. The presence of this envelope is mandatory for L2 Core Conformance and above.</p>
+          <table>
+            <thead><tr><th>Field</th><th>Type</th><th>Required</th><th>Description</th></tr></thead>
+            <tbody>
+              <tr><td><code>ardsVersion</code></td><td>string (SemVer)</td><td>SHALL</td><td>ARDS version this artefact conforms to, e.g., <code>"1.0.0"</code></td></tr>
+              <tr><td><code>schemaId</code></td><td>URI string</td><td>SHALL</td><td>Canonical URI of the ARDS schema for this artefact</td></tr>
+              <tr><td><code>schemaVersion</code></td><td>string (SemVer)</td><td>SHALL</td><td>Version of the declared schema</td></tr>
+              <tr><td><code>artefactType</code></td><td>string (enum)</td><td>SHALL</td><td>One of: RegulatoryObligationRecord, EvidenceArtefact, ComplianceVerdict, TraceBundle, UnifiedComplianceArtefact, AuditPackage</td></tr>
+              <tr><td><code>artefactId</code></td><td>URN (UUID v4)</td><td>SHALL</td><td>Globally unique artefact identifier. Format: <code>urn:uuid:{uuid-v4}</code></td></tr>
+              <tr><td><code>producedAt</code></td><td>string (ISO 8601)</td><td>SHALL</td><td>Timestamp of artefact creation</td></tr>
+              <tr><td><code>producerIdentity</code></td><td>object</td><td>SHALL</td><td>Identifies the producing system and organisation</td></tr>
+              <tr><td><code>regulatoryContext</code></td><td>object</td><td>SHALL</td><td>Identifies the regulation, regulatory body, jurisdiction, and period</td></tr>
+              <tr><td><code>certificationId</code></td><td>string</td><td>SHOULD</td><td>AxiomOrdo certification token ID if the producer is certified</td></tr>
+              <tr><td><code>previousVersion</code></td><td>URN</td><td>MAY</td><td>artefactId of the artefact this supersedes</td></tr>
+            </tbody>
+          </table>
+        </div>
+
+        <!-- 6. SCHEMAS -->
+        <div id="schemas" style="margin-bottom:3rem;">
+          <h2>6. Core Schema Set</h2>
+          <p>All canonical ARDS schemas are published at <code>https://schema.axiomordo.com/ards/</code>. The URI pattern is:</p>
+          <pre><code>https://schema.axiomordo.com/ards/{ardsVersion}/{family}/{schema-name}.schema.json</code></pre>
+          <p>The following schema families are defined in ARDS v1.0:</p>
+          <table>
+            <thead><tr><th>Family</th><th>Artefact Type</th><th>Domain</th><th>Status</th></tr></thead>
+            <tbody>
+              <tr><td>obligation-record</td><td>ROR</td><td>Core</td><td><span class="badge badge--teal">GA</span></td></tr>
+              <tr><td>evidence-artefact</td><td>EA</td><td>Core</td><td><span class="badge badge--teal">GA</span></td></tr>
+              <tr><td>compliance-verdict</td><td>CV</td><td>Core</td><td><span class="badge badge--teal">GA</span></td></tr>
+              <tr><td>trace-bundle</td><td>TB</td><td>Core</td><td><span class="badge badge--teal">GA</span></td></tr>
+              <tr><td>unified-compliance-artefact</td><td>UCA</td><td>Core</td><td><span class="badge badge--teal">GA</span></td></tr>
+              <tr><td>audit-package</td><td>AP</td><td>Core</td><td><span class="badge badge--teal">GA</span></td></tr>
+              <tr><td>fueleu/*</td><td>ROR, EA, CV, AP</td><td>FuelEU Maritime</td><td><span class="badge badge--teal">GA</span></td></tr>
+              <tr><td>cbam/*</td><td>ROR, EA, CV, AP</td><td>EU CBAM</td><td><span class="badge badge--teal">GA</span></td></tr>
+              <tr><td>meta</td><td>All</td><td>Core</td><td><span class="badge badge--teal">GA</span></td></tr>
+            </tbody>
+          </table>
+          <div style="text-align:center;margin-top:1.5rem;">
+            <a href="registry.html" class="btn btn--outline">Browse Full Schema Registry →</a>
+          </div>
+        </div>
+
+        <!-- 7. CONFORMANCE -->
+        <div id="conformance" style="margin-bottom:3rem;">
+          <h2>7. Conformance</h2>
+          <p>ARDS defines six conformance levels. Each level subsumes all levels below it. Self-declaration is sufficient for L1–L2; AxiomOrdo certification is required for L3–L6.</p>
+          <table>
+            <thead><tr><th>Level</th><th>Code</th><th>Name</th><th>Key Normative Requirements</th></tr></thead>
+            <tbody>
+              <tr>
+                <td><span class="badge badge--teal">L1</span></td>
+                <td>ARDS-SV</td>
+                <td>Schema-Valid</td>
+                <td>The artefact SHALL validate against the JSON Schema identified by <code>ards:meta.schemaId</code> without errors.</td>
+              </tr>
+              <tr>
+                <td><span class="badge badge--teal">L2</span></td>
+                <td>ARDS-CC</td>
+                <td>Core Conformant</td>
+                <td>The artefact SHALL include all required <code>ards:meta</code> fields. All field values SHALL meet the format and enumeration requirements of this specification.</td>
+              </tr>
+              <tr>
+                <td><span class="badge badge--blue">L3</span></td>
+                <td>ARDS-EC</td>
+                <td>Extended Conformant</td>
+                <td>The artefact SHALL implement provenance links (Trace Bundle), domain-specific extensions, and all SHOULD requirements of this specification.</td>
+              </tr>
+              <tr>
+                <td><span class="badge badge--blue">L4</span></td>
+                <td>ARDS-CG</td>
+                <td>Certified Generator</td>
+                <td>A tool that produces ARDS artefacts at L3, passes the AxiomOrdo conformance test suite, and holds a valid Certification Token.</td>
+              </tr>
+              <tr>
+                <td><span class="badge badge--navy">L5</span></td>
+                <td>ARDS-CS</td>
+                <td>Certified Consumer</td>
+                <td>A tool that ingests ARDS artefacts from any certified generator, validates provenance, and correctly processes all normative artefact types.</td>
+              </tr>
+              <tr>
+                <td><span class="badge badge--navy">L6</span></td>
+                <td>ARDS-CP</td>
+                <td>Certified Platform</td>
+                <td>An end-to-end platform that both generates and consumes ARDS artefacts, maintains a live registry, and satisfies all L4 and L5 requirements.</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <!-- 8. EXTENSIONS -->
+        <div id="extensions" style="margin-bottom:3rem;">
+          <h2>8. Extension Model</h2>
+          <p>ARDS provides a structured extension mechanism. Extensions SHALL follow these rules:</p>
+          <ul style="line-height:2;padding-left:1.5rem;">
+            <li>All extension fields SHALL be namespaced using a registered prefix, e.g., <code>fueleu:vesselIMO</code>, <code>cbam:installationId</code>.</li>
+            <li>Extension namespaces SHALL be registered in the ARDS Extension Registry at <code>registry.axiomordo.com</code>.</li>
+            <li>Extension schemas SHALL be published at a resolvable URI following the canonical pattern.</li>
+            <li>Unofficial extensions MAY use any prefix that does not conflict with registered namespaces and SHALL use the <code>x-</code> convention, e.g., <code>x-vendor:customField</code>.</li>
+            <li>An artefact that uses registered domain-pack extensions SHOULD declare the domain pack version in <code>ards:meta.domainPacks</code>.</li>
+          </ul>
+          <div class="note" style="margin-top:1.5rem;">
+            Domain packs (FuelEU, CBAM, PFAS, ETS) are maintained by AxiomOrdo domain working groups and published under AOSL-1.0. Any party may propose a new domain pack via the RFC process.
+          </div>
+        </div>
+
+        <!-- 9. VERSIONING -->
+        <div id="versioning" style="margin-bottom:3rem;">
+          <h2>9. Versioning</h2>
+          <p>ARDS follows Semantic Versioning (SemVer 2.0.0):</p>
+          <ul style="line-height:2;padding-left:1.5rem;">
+            <li><strong>Patch releases</strong> (e.g., 1.0.1): clarifications, editorial corrections. No schema changes.</li>
+            <li><strong>Minor releases</strong> (e.g., 1.1.0): new optional fields, new domain packs, new artefact types. Backward-compatible.</li>
+            <li><strong>Major releases</strong> (e.g., 2.0.0): breaking changes to required fields or the artefact model. At least 24-month deprecation notice required.</li>
+          </ul>
+          <p>All published versions of the specification and schemas are permanently archived at <code>schema.axiomordo.com/ards/{version}/</code>.</p>
+        </div>
+
+        <!-- 10. GOVERNANCE -->
+        <div id="governance" style="margin-bottom:3rem;">
+          <h2>10. Governance</h2>
+          <p>ARDS is maintained by the <strong>AxiomOrdo Standards Board</strong>, supported by:</p>
+          <ul style="line-height:2;padding-left:1.5rem;">
+            <li><strong>Technical Advisory Group (TAG)</strong> — reviews RFCs and schema proposals</li>
+            <li><strong>Domain Working Groups</strong> — one per domain pack; open membership</li>
+            <li><strong>Certification Committee</strong> — oversees certification programmes</li>
+            <li><strong>User Council</strong> — industry representatives with advisory votes</li>
+          </ul>
+          <p>Changes to this specification require an accepted RFC. See the <a href="governance.html#rfc">RFC Process</a> for details.</p>
+        </div>
+
+        <!-- ANNEXES -->
+        <div id="annexes" style="margin-bottom:3rem;">
+          <h2>Annexes</h2>
+          <div class="grid grid--2" style="margin-top:1.5rem;">
+            <div class="card">
+              <strong>Annex A — Normative Schema URIs</strong>
+              <p style="margin-top:0.5rem;font-size:0.9rem;">Complete list of all canonical schema URIs defined in ARDS v1.0, including core and domain-pack schemas.</p>
+            </div>
+            <div class="card">
+              <strong>Annex B — Field Semantics by Artefact Type</strong>
+              <p style="margin-top:0.5rem;font-size:0.9rem;">Detailed field-level requirements, cardinalities, and allowed values for each of the six artefact types.</p>
+            </div>
+            <div class="card">
+              <strong>Annex C — Conformance Test Matrix</strong>
+              <p style="margin-top:0.5rem;font-size:0.9rem;">The normative test cases used in AxiomOrdo certification assessments, mapped to specification requirements.</p>
+            </div>
+            <div class="card">
+              <strong>Annex D — AOSL-1.0 Licence Text</strong>
+              <p style="margin-top:0.5rem;font-size:0.9rem;">Full text of the AxiomOrdo Open Standard Licence under which this specification is published.</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- CHANGELOG -->
+        <div id="changelog">
+          <h2>Changelog</h2>
+          <table>
+            <thead><tr><th>Version</th><th>Date</th><th>Change</th></tr></thead>
+            <tbody>
+              <tr><td>1.0.0</td><td>May 2026</td><td>First published edition. Defines six artefact types, six conformance levels, FuelEU and CBAM domain packs, and ards-validate CLI reference implementation.</td></tr>
+            </tbody>
+          </table>
+        </div>
+
+      </div><!-- end main content -->
+    </div><!-- end grid -->
+  </div>
+</section>
+
+<footer class="footer">
+  <div class="footer__inner">
+    <div class="footer__col">
+      <div class="footer__logo">ARDS</div>
+      <p class="footer__tagline">The open standard for regulatory compliance artefacts.</p>
+      <p style="font-size:0.8rem;color:rgba(255,255,255,0.4);margin-top:1rem;">© 2026 AxiomOrdo Group. Licensed under AOSL-1.0.</p>
+    </div>
+    <div class="footer__col">
+      <div class="footer__heading">Standard</div>
+      <a href="specification.html" class="footer__link">Specification v1.0</a>
+      <a href="specification.html#changelog" class="footer__link">Changelog</a>
+      <a href="governance.html#rfc" class="footer__link">RFC Process</a>
+      <a href="governance.html" class="footer__link">Governance</a>
+    </div>
+    <div class="footer__col">
+      <div class="footer__heading">Tools</div>
+      <a href="developer.html#validator" class="footer__link">ards-validate CLI</a>
+      <a href="registry.html" class="footer__link">Schema Registry</a>
+      <a href="developer.html" class="footer__link">Quickstart Guide</a>
+    </div>
+    <div class="footer__col">
+      <div class="footer__heading">Certification</div>
+      <a href="certification.html" class="footer__link">Overview</a>
+      <a href="certification.html#apply" class="footer__link">Apply</a>
+      <a href="certification.html#directory" class="footer__link">Certified Directory</a>
+    </div>
+  </div>
+  <div class="footer__bottom">
+    <span>standards@axiomordo.com</span>
+    <span>registry.axiomordo.com</span>
+    <span>schema.axiomordo.com</span>
+  </div>
+</footer>
+
+</body>
+</html>
