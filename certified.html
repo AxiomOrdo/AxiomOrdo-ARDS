@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ARDS Certified Directory — registry.axiomordo.com/certified</title>
+  <meta name="description" content="The public register of all systems, products, and implementations currently holding valid ARDS certification. Published by AxiomOrdo.">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<nav class="nav">
+  <div class="nav__inner">
+    <a href="index.html" class="nav__logo">ARDS</a>
+    <div class="nav__links">
+      <a href="specification.html">Specification</a>
+      <a href="certification.html">Certification</a>
+      <a href="registry.html">Registry</a>
+      <a href="developer.html">Developers</a>
+      <a href="governance.html">Governance</a>
+    </div>
+    <a href="certification.html#apply" class="btn btn--sm">Get Certified</a>
+  </div>
+</nav>
+
+<div class="page-hero">
+  <div class="container">
+    <div class="badge badge--teal" style="margin-bottom:1rem;">registry.axiomordo.com/certified</div>
+    <h1>ARDS Certified Directory</h1>
+    <p>The public register of all systems, products, and implementations currently holding valid ARDS certification. Published and maintained by AxiomOrdo. Updated in real time as certifications are issued, renewed, and revoked.</p>
+  </div>
+</div>
+
+<!-- STATS BAR -->
+<div class="trust">
+  <div class="trust__inner">
+    <div class="trust__item">
+      <span class="trust__label">Certified Products</span>
+      <span class="trust__value">Founding Cohort Open</span>
+    </div>
+    <div class="trust__item">
+      <span class="trust__label">Directory Status</span>
+      <span class="trust__value">Live</span>
+    </div>
+    <div class="trust__item">
+      <span class="trust__label">Last Updated</span>
+      <span class="trust__value">May 2026</span>
+    </div>
+    <div class="trust__item">
+      <span class="trust__label">Verification</span>
+      <span class="trust__value">registry.axiomordo.com/verify</span>
+    </div>
+  </div>
+</div>
+
+<!-- HOW TO READ -->
+<section class="section">
+  <div class="container">
+    <div class="section-header">
+      <h2>About This Directory</h2>
+      <p>The ARDS Certified Directory is the authoritative public record of ARDS certification. Regulators, enterprise procurement teams, and system integrators use this directory to verify claims made by software vendors.</p>
+    </div>
+    <div class="grid grid--3">
+      <div class="card card--accent">
+        <h3>What It Shows</h3>
+        <p>Each entry lists the certified product, the holding organisation, certification level, applicable domain packs, certification date, and expiry date. Each entry links to the machine-readable Certification Token.</p>
+      </div>
+      <div class="card card--accent">
+        <h3>Real-Time Verification</h3>
+        <p>Every entry has a permanent verification URL. Any party can call the verification endpoint to confirm a certificate's current status — valid, expired, or revoked — without contacting AxiomOrdo.</p>
+      </div>
+      <div class="card card--accent">
+        <h3>How to Get Listed</h3>
+        <p>Listing in the directory is automatic upon successful certification at L3 or above. L1–L2 are self-declared and do not appear in the directory. <a href="certification.html#apply">Apply for certification →</a></p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- DIRECTORY TABLE -->
+<section class="section section--alt">
+  <div class="container">
+    <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:2rem;flex-wrap:wrap;gap:1rem;">
+      <h2 style="margin:0;font-size:1.6rem;font-weight:800;color:var(--navy);">Certified Products</h2>
+      <div style="display:flex;gap:0.75rem;flex-wrap:wrap;">
+        <span class="badge badge--teal">L3 Extended Conformant</span>
+        <span class="badge badge--blue">L4 Certified Generator</span>
+        <span class="badge badge--navy">L5 Certified Consumer</span>
+        <span class="badge" style="background:var(--navy);color:#fff;">L6 Certified Platform</span>
+      </div>
+    </div>
+
+    <!-- EMPTY STATE — shown while founding cohort fills -->
+    <div class="card" style="text-align:center;padding:4rem 2rem;border:2px dashed var(--border);">
+      <div style="font-size:3.5rem;margin-bottom:1rem;">🏆</div>
+      <h3 style="font-size:1.4rem;margin-bottom:0.75rem;">Founding Cohort — Applications Open</h3>
+      <p style="color:var(--mid);max-width:560px;margin:0 auto 2rem;">The ARDS Certified Directory is open and accepting its first entries. Be among the first certified products — founding partners receive premier placement, co-marketing support, and the lowest certification fees we will ever offer.</p>
+      <div style="display:flex;gap:1rem;justify-content:center;flex-wrap:wrap;">
+        <a href="certification.html#apply" class="btn btn--primary">Apply for Certification</a>
+        <a href="certification.html#fees" class="btn btn--outline-dark">View Fees</a>
+      </div>
+    </div>
+
+    <div class="note" style="margin-top:2rem;">
+      <strong>For vendors:</strong> Once your Certification Token is issued, your product appears here automatically within one business day. Your entry includes a permanent link to your verification page at <code>registry.axiomordo.com/verify/{certificateId}</code>.
+    </div>
+  </div>
+</section>
+
+<!-- DIRECTORY STRUCTURE EXPLANATION -->
+<section class="section">
+  <div class="container">
+    <div class="section-header">
+      <h2>Directory Entry Structure</h2>
+      <p>Each certified product listing contains the following fields.</p>
+    </div>
+    <table>
+      <thead>
+        <tr><th>Field</th><th>Description</th><th>Example</th></tr>
+      </thead>
+      <tbody>
+        <tr><td><strong>Certificate ID</strong></td><td>Unique identifier for the certification</td><td><code>ards-cert-2026-000001</code></td></tr>
+        <tr><td><strong>Organisation</strong></td><td>Legal name of the certified entity</td><td>Acme Compliance Ltd</td></tr>
+        <tr><td><strong>Product</strong></td><td>Product or system name as assessed</td><td>CompliancePro</td></tr>
+        <tr><td><strong>Version</strong></td><td>Product version covered by this certificate</td><td>4.0.0</td></tr>
+        <tr><td><strong>Level</strong></td><td>ARDS conformance level achieved</td><td><span class="badge badge--blue">L4 Certified Generator</span></td></tr>
+        <tr><td><strong>Domain Packs</strong></td><td>Domain packs covered by the assessment</td><td>FuelEU, CBAM</td></tr>
+        <tr><td><strong>ARDS Version</strong></td><td>ARDS standard version assessed against</td><td>1.0.0</td></tr>
+        <tr><td><strong>Issued</strong></td><td>Date of certification</td><td>2026-06-01</td></tr>
+        <tr><td><strong>Expires</strong></td><td>Expiry date (annual renewal required)</td><td>2027-06-01</td></tr>
+        <tr><td><strong>Status</strong></td><td>Current validity status</td><td><span class="badge badge--teal">VALID</span></td></tr>
+        <tr><td><strong>Verify</strong></td><td>Link to machine-readable token and verification endpoint</td><td><code>registry.axiomordo.com/verify/...</code></td></tr>
+      </tbody>
+    </table>
+  </div>
+</section>
+
+<!-- VERIFICATION API -->
+<section class="section section--alt">
+  <div class="container">
+    <div class="section-header">
+      <h2>Verification API</h2>
+      <p>The ARDS registry provides a simple JSON verification endpoint. Any system can check certificate validity without contacting AxiomOrdo.</p>
+    </div>
+    <pre><code># Check a certificate by ID
+GET https://registry.axiomordo.com/verify/{certificateId}
+
+# Response
+{
+  "certificateId": "ards-cert-2026-000001",
+  "status": "VALID",
+  "holder": {
+    "organisation": "Acme Compliance Ltd",
+    "product": "CompliancePro",
+    "productVersion": "4.0.0"
+  },
+  "certification": {
+    "level": "ARDS_CERTIFIED_GENERATOR",
+    "levelCode": "ARDS-CG-001",
+    "ardsVersion": "1.0.0",
+    "domainPacks": ["FuelEU", "CBAM"]
+  },
+  "validity": {
+    "issuedAt": "2026-06-01T00:00:00Z",
+    "expiresAt": "2027-06-01T00:00:00Z"
+  },
+  "tokenUrl": "https://registry.axiomordo.com/tokens/ards-cert-2026-000001.json"
+}</code></pre>
+    <div class="note" style="margin-top:1.5rem;">
+      Status values: <code>VALID</code> · <code>EXPIRED</code> · <code>REVOKED</code> · <code>SUSPENDED</code>. A <code>404</code> response means the certificate ID does not exist in the registry.
+    </div>
+  </div>
+</section>
+
+<!-- REVOCATION -->
+<section class="section">
+  <div class="container" style="max-width:800px;">
+    <div class="section-header">
+      <h2>Revocation &amp; Appeals</h2>
+    </div>
+    <div class="card">
+      <p>AxiomOrdo may revoke a certification in the following circumstances:</p>
+      <ul style="line-height:2;padding-left:1.5rem;margin:1rem 0;">
+        <li>Failure to renew within the renewal window</li>
+        <li>Evidence that the certified product no longer meets the assessed conformance level</li>
+        <li>Breach of the ARDS Mark Usage Guidelines</li>
+        <li>Material misrepresentation during the certification assessment</li>
+        <li>Withdrawal of the product or cessation of the certified organisation</li>
+      </ul>
+      <p>Revocations take effect immediately upon decision. The holder is notified by email and the directory entry is updated to <span class="badge" style="background:#C62828;color:#fff;">REVOKED</span> status.</p>
+      <p style="margin-top:1rem;"><strong>To appeal a revocation decision:</strong> submit a written appeal within 30 days to <a href="mailto:appeals@axiomordo.com">appeals@axiomordo.com</a>. Appeals are reviewed by the Certification Committee within 15 business days. The Committee's decision is final.</p>
+    </div>
+  </div>
+</section>
+
+<footer class="footer">
+  <div class="footer__inner">
+    <div class="footer__col">
+      <div class="footer__logo">ARDS</div>
+      <p class="footer__tagline">The open standard for regulatory compliance artefacts.</p>
+      <p style="font-size:0.8rem;color:rgba(255,255,255,0.4);margin-top:1rem;">© 2026 AxiomOrdo Group. Licensed under AOSL-1.0.</p>
+    </div>
+    <div class="footer__col">
+      <div class="footer__heading">Standard</div>
+      <a href="specification.html" class="footer__link">Specification v1.0</a>
+      <a href="governance.html#rfc" class="footer__link">RFC Process</a>
+      <a href="governance.html" class="footer__link">Governance</a>
+    </div>
+    <div class="footer__col">
+      <div class="footer__heading">Certification</div>
+      <a href="certification.html" class="footer__link">Overview</a>
+      <a href="certification.html#apply" class="footer__link">Apply</a>
+      <a href="certified.html" class="footer__link">Certified Directory</a>
+      <a href="brand.html" class="footer__link">Brand Guidelines</a>
+    </div>
+    <div class="footer__col">
+      <div class="footer__heading">Contact</div>
+      <a href="mailto:standards@axiomordo.com" class="footer__link">standards@axiomordo.com</a>
+      <a href="mailto:appeals@axiomordo.com" class="footer__link">appeals@axiomordo.com</a>
+    </div>
+  </div>
+  <div class="footer__bottom">
+    <span>standards@axiomordo.com</span>
+    <span>appeals@axiomordo.com</span>
+    <span>registry.axiomordo.com/certified</span>
+  </div>
+</footer>
+
+</body>
+</html>
