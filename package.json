@@ -3,6 +3,9 @@
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
+  "directories": {
+    "test": "tests"
+  },
   "scripts": {
     "test": "playwright test"
   },
@@ -21,5 +24,8 @@
   "devDependencies": {
     "@playwright/test": "^1.62.1",
     "http-server": "^14.1.1"
+  },
+  "dependencies": {
+    "@vercel/analytics": "^2.0.1"
   }
 }
