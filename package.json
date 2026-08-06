@@ -23,8 +23,7 @@
   "homepage": "https://github.com/AxiomOrdo/AxiomOrdo-ARDS#readme",
   "devDependencies": {
     "@playwright/test": "^1.62.1",
-    "http-server": "^14.1.1",
-    "vercel": "^58.5.1"
+    "http-server": "^14.1.1"
   },
   "dependencies": {
     "@vercel/analytics": "^2.0.1"
