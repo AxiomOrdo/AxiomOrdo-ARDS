@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url><loc>https://ards.axiomordo.com/</loc></url>
-  <url><loc>https://ards.axiomordo.com/specification.html</loc></url>
-  <url><loc>https://ards.axiomordo.com/certification.html</loc></url>
-  <url><loc>https://ards.axiomordo.com/certified.html</loc></url>
-  <url><loc>https://ards.axiomordo.com/registry.html</loc></url>
-  <url><loc>https://ards.axiomordo.com/developer.html</loc></url>
-  <url><loc>https://ards.axiomordo.com/governance.html</loc></url>
-  <url><loc>https://ards.axiomordo.com/brand.html</loc></url>
+  <url><loc>https://ards.axiomordo.com/specification</loc></url>
+  <url><loc>https://ards.axiomordo.com/certification</loc></url>
+  <url><loc>https://ards.axiomordo.com/certified</loc></url>
+  <url><loc>https://ards.axiomordo.com/registry</loc></url>
+  <url><loc>https://ards.axiomordo.com/developer</loc></url>
+  <url><loc>https://ards.axiomordo.com/governance</loc></url>
+  <url><loc>https://ards.axiomordo.com/brand</loc></url>
 </urlset>
